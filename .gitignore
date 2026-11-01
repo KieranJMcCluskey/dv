@@ -1,0 +1,9 @@
+# Source government PDFs and extracted plain text — working material,
+# not needed to serve or regenerate the site. Kept locally only.
+raw-reports/
+text/
+
+# KieranOS internal project-registry bookkeeping, not site content.
+meta.json
+state.json
+history.jsonl

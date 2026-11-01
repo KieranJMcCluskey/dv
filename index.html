@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DV Death Review Recommendation Tracker — headline numbers</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --page-plane:     #f9f9f7;
+    --surface-1:      #fcfcfb;
+    --text-primary:   #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted:     #898781;
+    --gridline:       #e1e0d9;
+    --border:         rgba(11,11,11,0.10);
+    --status-good:     #0ca30c;
+    --status-warning:  #fab219;
+    --status-serious:  #ec835a;
+    --status-critical: #d03b3b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --page-plane:     #0d0d0d;
+      --surface-1:      #1a1a19;
+      --text-primary:   #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted:     #898781;
+      --gridline:       #2c2c2a;
+      --border:         rgba(255,255,255,0.10);
+      --status-good:     #0ca30c;
+      --status-warning:  #fab219;
+      --status-serious:  #ec835a;
+      --status-critical: #d03b3b;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    background: var(--page-plane);
+  }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: var(--text-primary);
+  }
+  .viz-root {
+    background: var(--page-plane);
+    color: var(--text-primary);
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 48px 24px 96px; }
+
+  h1 { font-size: 28px; font-weight: 600; margin: 0 0 8px; }
+  .dek { color: var(--text-secondary); font-size: 16px; line-height: 1.5; margin: 0 0 40px; max-width: 640px; }
+
+  h2 { font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
+       color: var(--text-muted); margin: 48px 0 16px; }
+
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--gridline);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .tile {
+    background: var(--surface-1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .tile .label { font-size: 13px; color: var(--text-muted); }
+  .tile .value { font-size: 36px; font-weight: 600; line-height: 1; color: var(--text-primary); }
+  .tile .status-row { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+  .dot.good { background: var(--status-good); }
+  .dot.warning { background: var(--status-warning); }
+  .dot.serious { background: var(--status-serious); }
+  .dot.critical { background: var(--status-critical); }
+  .status-row.good { color: var(--status-good); }
+  .status-row.warning { color: #96700a; }
+  .status-row.serious { color: #a8451f; }
+  .status-row.critical { color: var(--status-critical); }
+  @media (prefers-color-scheme: dark) {
+    .status-row.warning { color: var(--status-warning); }
+    .status-row.serious { color: var(--status-serious); }
+  }
+  .tile .context { font-size: 13px; color: var(--text-secondary); line-height: 1.45; }
+  .tile .source { font-size: 12px; color: var(--text-muted); margin-top: auto; padding-top: 8px; }
+  .tile .source a { color: inherit; }
+
+  .gap-list { display: flex; flex-direction: column; gap: 1px; background: var(--gridline);
+              border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .gap-row { background: var(--surface-1); padding: 16px 20px; display: grid;
+             grid-template-columns: 90px 1fr; gap: 16px; align-items: start; }
+  .gap-row .juris { font-weight: 600; font-size: 14px; }
+  .gap-row .juris .status-row { margin-top: 4px; }
+  .gap-row .desc { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+  .gap-row .desc strong { color: var(--text-primary); }
+
+  .note { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-top: 12px; }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--gridline);
+           font-size: 12px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+<div class="viz-root">
+  <div class="wrap">
+
+    <h1>DV death review recommendations: who's acting on them?</h1>
+    <p class="dek">Every state DV/family-violence death review body makes recommendations to stop the next death. This tracks what happened after — jurisdiction by jurisdiction, straight from each body's own reporting. First pass: headline numbers only, sourced from the most recent report that states them.</p>
+
+    <h2>What the numbers say, by jurisdiction</h2>
+    <div class="kpi-row">
+
+      <div class="tile">
+        <div class="label">NSW — DVDRT</div>
+        <div class="value">40%</div>
+        <div class="status-row warning"><span class="dot warning"></span>Partial</div>
+        <div class="context">Of 122 recommendations made 2011–2019, 49 are implemented. 8% (10) have had no action at all. The Team paused issuing new recommendations after this report to focus on data analysis instead.</div>
+        <div class="source">Source: <a href="https://coroners.nsw.gov.au/documents/reports/2019-2021_DVDRT_Report.pdf" target="_blank" rel="noopener">DVDRT Report 2019–2021</a>, Table 7.2</div>
+      </div>
+
+      <div class="tile">
+        <div class="label">QLD — DFVDRAB</div>
+        <div class="value">84%</div>
+        <div class="status-row good"><span class="dot good"></span>Mostly actioned</div>
+        <div class="context">Of 80 recommendations since 2016, 67 are implemented and 7 more are in progress. Only 1 was ever rejected (noted) by government.</div>
+        <div class="source">Source: <a href="https://www.coronerscourt.qld.gov.au/__data/assets/pdf_file/0006/885921/domestic-and-family-violence-death-review-and-advisory-board-report-2024-25.pdf" target="_blank" rel="noopener">DFVDRAB Annual Report 2024–25</a>, p.19</div>
+      </div>
+
+      <div class="tile">
+        <div class="label">WA — Ombudsman</div>
+        <div class="value">9/9</div>
+        <div class="status-row warning"><span class="dot warning"></span>Claimed, not verified</div>
+        <div class="context">All 9 recommendations from the 2022 investigation had "steps taken or proposed" per the 2023 follow-up — agency self-report, not confirmed completion. A separate 54 recommendations from 2015 are not yet reconciled here.</div>
+        <div class="source">Source: <a href="https://ombudsman.wa.gov.au/sites/default/files/2026-05/Implementation-of-recommendations-from-an-Investigation-into-family-and-domestic-violence-and-suicide-2023.pdf" target="_blank" rel="noopener">2023 implementation report</a></div>
+      </div>
+
+      <div class="tile">
+        <div class="label">SA — State Coroner</div>
+        <div class="value">No tally</div>
+        <div class="status-row serious"><span class="dot serious"></span>Not publicly tracked</div>
+        <div class="context">DV recommendations are issued inquest-by-inquest, buried inside general State Coroner annual reports. Checked the most recent report (2024–25): zero DV-specific recommendations that year. No cumulative count or implementation tracking found anywhere in the series.</div>
+        <div class="source">Source: <a href="https://www.courts.sa.gov.au/publications/annual-reports/" target="_blank" rel="noopener">State Coroner annual reports</a>, 17 years checked</div>
+      </div>
+
+    </div>
+    <p class="note">These numbers aren't directly comparable to each other — different time windows, different self-reporting standards, different definitions of "implemented." Each tile stands on its own source, not on a shared scale. That unevenness is itself part of the story.</p>
+
+    <h2>Jurisdictions with no comparable tracking</h2>
+    <div class="gap-list">
+
+      <div class="gap-row">
+        <div class="juris">ACT
+          <div class="status-row critical"><span class="dot critical"></span>No mechanism</div>
+        </div>
+        <div class="desc">No domestic/family violence death review body exists. Confirmed via the Australian Human Rights Commission's 2016 call to expand DV death review to the jurisdictions that lack it.</div>
+      </div>
+
+      <div class="gap-row">
+        <div class="juris">TAS
+          <div class="status-row critical"><span class="dot critical"></span>No mechanism</div>
+        </div>
+        <div class="desc">Same gap as the ACT — no standing DV death review function. Nobody is systematically reviewing these deaths in either jurisdiction.</div>
+      </div>
+
+      <div class="gap-row">
+        <div class="juris">NT
+          <div class="status-row serious"><span class="dot serious"></span>Ad hoc only</div>
+        </div>
+        <div class="desc"><strong>Correction to an earlier assumption in this project:</strong> the NT is not a "nothing" jurisdiction like the ACT/TAS — it has no standing review body, but individual coronial inquests do make recommendations. The November 2024 inquest into the deaths of 4 Aboriginal women made 35 recommendations; the NT Government's July 2025 response claims 24 of 35 are "already in place" — a self-reported claim, not independently verified, and not something this tracker can confirm without the underlying evidence.</div>
+      </div>
+
+      <div class="gap-row">
+        <div class="juris">VIC
+          <div class="status-row serious"><span class="dot serious"></span>Discontinued</div>
+        </div>
+        <div class="desc">The Family Violence Reform Implementation Monitor tracked all 227 Royal Commission recommendations annually — the most thorough mechanism of any state — but the office closed 31 December 2022. Monitoring moved inside the Department of Premier &amp; Cabinet and is no longer independent or published on the same annual cycle.</div>
+      </div>
+
+    </div>
+
+    <footer>
+      dv-death-review-tracker — headline numbers pass, 2026-10-31. Full per-recommendation extraction (theme, target agency, repeat-recommendation detection) is the next phase; see docs/scope.md.
+    </footer>
+  </div>
+</div>
+</body>
+</html>

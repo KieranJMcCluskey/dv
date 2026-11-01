@@ -1,0 +1,36 @@
+{
+  "jurisdiction": "QLD",
+  "review_body": "Domestic and Family Violence Death Review and Advisory Board",
+  "source_report": "QLD DFVDRAB Annual Report 2025-26",
+  "source_file": "raw-reports/QLD/2025-26_report.pdf",
+  "source_table": "Table 2.1: Implementation status of Board recommendations, by financial year (2016-2025)",
+  "source_text_line_ref": "text/QLD_2025-26_report.txt:1270-1296",
+  "total_recommendations": 84,
+  "note": "This is a running cumulative table the Board republishes and updates in every annual report (confirmed against Figure 2.2 in the 2023-24 report, which shows the same per-year splits as they stood two years earlier). No per-recommendation extraction needed for jurisdiction-level findings — QLD's own table already does the aggregation NSW requires a one-off Table 7.2 for.",
+  "by_report_period": [
+    { "period": "2016-17", "recs_made": 21, "accepted": 11, "accepted_in_principle": 7, "accepted_in_part": 2, "noted": 1, "not_commenced": 0, "completed": 20, "in_progress": 0 },
+    { "period": "2017-18", "recs_made": 13, "accepted": 8, "accepted_in_principle": 5, "accepted_in_part": 0, "noted": 0, "not_commenced": 0, "completed": 13, "in_progress": 0 },
+    { "period": "2018-19", "recs_made": 16, "accepted": 9, "accepted_in_principle": 7, "accepted_in_part": 0, "noted": 0, "not_commenced": 0, "completed": 16, "in_progress": 0 },
+    { "period": "2019-20", "recs_made": 9, "accepted": 9, "accepted_in_principle": 0, "accepted_in_part": 0, "noted": 0, "not_commenced": 0, "completed": 9, "in_progress": 0 },
+    { "period": "2020-21", "recs_made": 6, "accepted": 5, "accepted_in_principle": 1, "accepted_in_part": 0, "noted": 0, "not_commenced": 0, "completed": 5, "in_progress": 1 },
+    { "period": "2021-22", "recs_made": 10, "accepted": 10, "accepted_in_principle": 0, "accepted_in_part": 0, "noted": 0, "not_commenced": 0, "completed": 10, "in_progress": 0 },
+    { "period": "2022-23", "recs_made": 0, "note": "Board made nil recommendations" },
+    { "period": "2023-24", "recs_made": 5, "accepted": 3, "accepted_in_principle": 2, "accepted_in_part": 0, "noted": 0, "not_commenced": 0, "completed": 2, "in_progress": 3 },
+    { "period": "2024-25", "recs_made": 4, "note": "Awaiting Government response as of 2025-26 report" }
+  ],
+  "totals": {
+    "recs_made": 84,
+    "accepted": 55,
+    "accepted_in_principle": 22,
+    "accepted_in_part": 2,
+    "noted": 1,
+    "not_commenced": 0,
+    "completed": 75,
+    "in_progress": 4
+  },
+  "cross_check": {
+    "source": "Figure 2.2, QLD DFVDRAB Annual Report 2023-24 (text/QLD_2023-24_report.txt:980-996)",
+    "snapshot_at": "2023-24",
+    "values_matched": "2016-17 through 2021-22 implemented/in-progress/noted splits as reported two years earlier are consistent with the 2025-26 cumulative table, with four 2021-22 recommendations moving from 'in progress' to 'completed' in the intervening two years — confirms this is a genuine maintained series, not a one-off snapshot."
+  }
+}

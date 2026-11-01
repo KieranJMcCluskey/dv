@@ -1,0 +1,18 @@
+{
+  "jurisdiction": "NSW",
+  "review_body": "NSW Domestic Violence Death Review Team",
+  "source_report": "NSW DVDRT Report 2019-2021",
+  "source_file": "raw-reports/NSW/2019-2021.pdf",
+  "source_table": "Table 7.2: DVDRT recommendations by implementation status (n=122)",
+  "source_text_line_ref": "text/NSW_2019-2021.txt:11449-11456",
+  "total_recommendations": 122,
+  "note": "Cumulative status as assessed at time of 2019-2021 report across all prior DVDRT recommendations, not just those made in this reporting period.",
+  "categories": [
+    { "status": "Implemented", "count": 49, "pct": 40.2 },
+    { "status": "Alternative practice approach adopted", "count": 15, "pct": 12.3 },
+    { "status": "Partially implemented – in progress", "count": 39, "pct": 32.0 },
+    { "status": "Partially implemented - not in progress", "count": 9, "pct": 7.4 },
+    { "status": "Not implemented", "count": 10, "pct": 8.2 }
+  ],
+  "rounding_note": "Report states figures may not add to 100 due to rounding; stated TOTAL is 100%."
+}
