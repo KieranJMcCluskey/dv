@@ -1,0 +1,45 @@
+{
+  "_jurisdiction": "SA",
+  "_verified": "2026-11-04",
+  "_source": "https://www.parliament.sa.gov.au/-/media/Project/Parliament/Documents/Members/Ministry-as-at-25-March-2026.pdf",
+  "_route": "form",
+  "_route_note": "The SA ministry list publishes no email addresses. Two different address patterns appeared in web search and they contradicted each other, so neither is used here. The letter is shown for copying, with the minister's official page linked. Replace contact_url with a verified email only from an official SA Government source.",
+  "_note": "Ministry of the 56th Parliament, sworn in 25 March 2026. An earlier parliament.sa.gov.au file named Current-Ministry.pdf still served the 55th Parliament list and was wrong on Police and Child Protection. Use the dated file.",
+  "agencies": {
+    "police": {
+      "minister": "Hon Michael Brown MP",
+      "portfolio": "Minister for Police; Minister for Correctional Services",
+      "contact_url": "https://www.premier.sa.gov.au/the-team/michael-brown-mp"
+    },
+    "corrections": {
+      "minister": "Hon Michael Brown MP",
+      "portfolio": "Minister for Police; Minister for Correctional Services",
+      "contact_url": "https://www.premier.sa.gov.au/the-team/michael-brown-mp"
+    },
+    "courts-justice": {
+      "minister": "Hon Kyam Maher MLC",
+      "portfolio": "Deputy Premier; Attorney-General; Minister for Aboriginal Affairs",
+      "contact_url": "https://www.premier.sa.gov.au/the-team"
+    },
+    "child-protection": {
+      "minister": "Hon Alice Rolls MP",
+      "portfolio": "Minister for Child Protection; Minister for Domestic, Family and Sexual Violence",
+      "contact_url": "https://www.premier.sa.gov.au/the-team"
+    },
+    "health": {
+      "minister": "Hon Blair Boyer MP",
+      "portfolio": "Minister for Health and Wellbeing",
+      "contact_url": "https://www.premier.sa.gov.au/the-team/blair-boyer-mp"
+    },
+    "state-govt": {
+      "minister": "Hon Alice Rolls MP",
+      "portfolio": "Minister for Child Protection; Minister for Domestic, Family and Sexual Violence",
+      "contact_url": "https://www.premier.sa.gov.au/the-team"
+    },
+    "other": {
+      "minister": "Hon Alice Rolls MP",
+      "portfolio": "Minister for Child Protection; Minister for Domestic, Family and Sexual Violence",
+      "contact_url": "https://www.premier.sa.gov.au/the-team"
+    }
+  }
+}

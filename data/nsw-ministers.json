@@ -1,0 +1,45 @@
+{
+  "_jurisdiction": "NSW",
+  "_verified": "2026-11-04",
+  "_source": "https://www.nsw.gov.au/nsw-government/ministers",
+  "_route": "form",
+  "_route_note": "NSW publishes no ministerial email addresses. Each minister has an online contact form on nsw.gov.au, so the letter is shown for copying and the form opens in a new tab. Do not substitute a guessed address.",
+  "_note": "Portfolios move with reshuffles. Re-check against nsw.gov.au/nsw-government/ministers before relying on this for a campaign.",
+  "agencies": {
+    "police": {
+      "minister": "Hon Yasmin Catley MP",
+      "portfolio": "Minister for Police and Counter-terrorism; Minister for the Hunter",
+      "contact_url": "https://www.nsw.gov.au/nsw-government/ministers/minister-for-police-and-counter-terrorism-minister-for-hunter"
+    },
+    "courts-justice": {
+      "minister": "Hon Michael Daley MP",
+      "portfolio": "Attorney General",
+      "contact_url": "https://www.nsw.gov.au/nsw-government/ministers/attorney-general"
+    },
+    "child-protection": {
+      "minister": "Hon Kate Washington MP",
+      "portfolio": "Minister for Families and Communities; Minister for Disability Inclusion",
+      "contact_url": "https://www.nsw.gov.au/nsw-government/ministers/minister-for-families-and-communities-disability-inclusion"
+    },
+    "health": {
+      "minister": "Hon Ryan Park MP",
+      "portfolio": "Minister for Health; Minister for Regional Health; Minister for the Illawarra and the South Coast",
+      "contact_url": "https://www.nsw.gov.au/nsw-government/ministers/minister-for-health-minister-for-regional-health-and-minister-for-illawarra-and-south-coast"
+    },
+    "corrections": {
+      "minister": "Hon Anoulack Chanthivong MP",
+      "portfolio": "Minister for Corrections; Minister for Better Regulation and Fair Trading; Minister for Industry and Trade; Minister for Innovation, Science and Technology; Minister for Building",
+      "contact_url": "https://www.nsw.gov.au/nsw-government/ministers/minister-for-better-regulation-and-fair-trading-building-industry-and-trade-innovation-science-and-technology-corrections"
+    },
+    "state-govt": {
+      "minister": "Hon Jodie Harrison MP",
+      "portfolio": "Minister for the Prevention of Domestic Violence and Sexual Assault; Minister for Women; Minister for Seniors",
+      "contact_url": "https://www.nsw.gov.au/nsw-government/ministers/minister-for-women-seniors-prevention-of-domestic-violence-and-sexual-assault"
+    },
+    "other": {
+      "minister": "Hon Jodie Harrison MP",
+      "portfolio": "Minister for the Prevention of Domestic Violence and Sexual Assault; Minister for Women; Minister for Seniors",
+      "contact_url": "https://www.nsw.gov.au/nsw-government/ministers/minister-for-women-seniors-prevention-of-domestic-violence-and-sexual-assault"
+    }
+  }
+}

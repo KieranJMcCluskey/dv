@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email a Minister About a Stalled Recommendation</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --page-plane:     #f9f9f7;
+    --surface-1:      #fcfcfb;
+    --text-primary:   #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted:     #898781;
+    --gridline:       #e1e0d9;
+    --border:         rgba(11,11,11,0.10);
+    --accent:         #2b5fb0;
+    --status-good:     #0ca30c;
+    --status-warning:  #fab219;
+    --status-serious:  #ec835a;
+    --status-critical: #d03b3b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --page-plane:     #0d0d0d;
+      --surface-1:      #1a1a19;
+      --text-primary:   #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted:     #898781;
+      --gridline:       #2c2c2a;
+      --border:         rgba(255,255,255,0.10);
+      --accent:         #6fa3ff;
+      --status-good:     #0ca30c;
+      --status-warning:  #fab219;
+      --status-serious:  #ec835a;
+      --status-critical: #d03b3b;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--page-plane); }
+  body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--text-primary); }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 48px 24px 96px; }
+  a { color: var(--accent); }
+
+  h1 { font-size: 26px; font-weight: 600; margin: 0 0 8px; }
+  .dek { color: var(--text-secondary); font-size: 16px; line-height: 1.5; margin: 0 0 8px; max-width: 640px; }
+  .back { font-size: 13px; margin-bottom: 24px; display: inline-block; }
+
+  .caveat { font-size: 13px; color: var(--text-muted); background: var(--surface-1); border: 1px solid var(--border);
+            border-radius: 8px; padding: 12px 16px; margin: 16px 0 32px; line-height: 1.5; }
+
+  h2 { font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
+       color: var(--text-muted); margin: 40px 0 14px; }
+
+  .sender-box { background: var(--surface-1); border: 1px solid var(--border); border-radius: 8px;
+                padding: 18px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; }
+  .sender-box .field { display: flex; flex-direction: column; gap: 4px; }
+  .sender-box label { font-size: 12px; color: var(--text-muted); }
+  .sender-box input { font-size: 14px; padding: 8px 10px; border: 1px solid var(--border); border-radius: 6px;
+                       background: var(--page-plane); color: var(--text-primary); font-family: inherit; }
+  .sender-box .hint { grid-column: 1 / -1; font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .chip { font-size: 13px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border);
+          background: var(--surface-1); color: var(--text-secondary); cursor: pointer; user-select: none; }
+  .chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+  .rec-list { display: flex; flex-direction: column; gap: 1px; background: var(--gridline);
+              border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .rec-card { background: var(--surface-1); padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; }
+  .rec-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 12px; color: var(--text-muted); }
+  .badge { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600;
+           padding: 3px 9px; border-radius: 999px; border: 1px solid var(--border); }
+  .badge.status-not-started { color: var(--status-critical); }
+  .badge.status-in-progress { color: #96700a; }
+  @media (prefers-color-scheme: dark) { .badge.status-in-progress { color: var(--status-warning); } }
+  .badge.status-unclear { color: var(--text-muted); }
+  .badge.agency { color: var(--text-secondary); text-transform: capitalize; }
+  .rec-text { font-size: 14px; line-height: 1.55; color: var(--text-primary); }
+  .rec-source { font-size: 12px; color: var(--text-muted); }
+  .rec-actions { margin-top: 4px; }
+  .email-btn { font-size: 13px; font-weight: 600; padding: 8px 14px; border-radius: 6px; border: none;
+               background: var(--accent); color: #fff; cursor: pointer; font-family: inherit; }
+  .email-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--gridline);
+           font-size: 12px; color: var(--text-muted); }
+
+  /* Letter panel, used where a jurisdiction publishes no ministerial email. */
+  .letter-panel { border: 0; padding: 0; max-width: 680px; width: calc(100% - 32px);
+                  background: var(--surface-1); color: var(--text-primary);
+                  border-radius: 10px; box-shadow: 0 16px 48px rgba(0,0,0,0.3); }
+  .letter-panel::backdrop { background: rgba(0,0,0,0.5); }
+  .letter-inner { padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+  .letter-inner h3 { margin: 0; font-size: 16px; }
+  .letter-inner p { margin: 0; font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+  .letter-inner textarea { width: 100%; min-height: 240px; font: 13px/1.5 ui-monospace, Menlo, monospace;
+    padding: 10px; border: 1px solid var(--border); border-radius: 6px;
+    background: var(--page-plane); color: var(--text-primary); resize: vertical; }
+  .letter-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+  .letter-actions a, .letter-actions button {
+    font-size: 13px; font-weight: 600; padding: 9px 14px; border-radius: 6px; cursor: pointer;
+    border: 1px solid var(--border); background: var(--page-plane); color: var(--text-primary);
+    text-decoration: none; }
+  .letter-actions .primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .copied { font-size: 13px; color: var(--status-good); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="index.html">&larr; Back to the tracker</a>
+  <h1 id="page-h1">Email a minister about an unactioned recommendation</h1>
+  <p class="dek" id="page-dek"></p>
+
+  <div class="caveat" id="page-caveat"></div>
+
+  <h2>Your details</h2>
+  <div class="sender-grid">
+    <label>First name<input id="f-first" type="text" autocomplete="given-name"></label>
+    <label>Surname<input id="f-last" type="text" autocomplete="family-name"></label>
+    <label>Your email (optional, included in signature)<input id="f-email" type="email" autocomplete="email"></label>
+    <label>Suburb / electorate (optional)<input id="f-suburb" type="text"></label>
+  </div>
+  <p class="fineprint">Saved in your browser only. These details go nowhere except into the letter below, where they sign it.</p>
+
+  <h2>Filter</h2>
+  <div class="filters" id="status-filters"></div>
+  <div class="filters" id="agency-filters"></div>
+
+  <h2 id="count-heading">Recommendations</h2>
+  <div class="rec-list" id="rec-list"></div>
+
+  <footer id="page-footer"></footer>
+</div>
+
+<dialog class="letter-panel" id="letter-panel">
+  <form method="dialog" class="letter-inner">
+    <h3 id="letter-title">Your letter</h3>
+    <p id="letter-note"></p>
+    <textarea id="letter-text" readonly></textarea>
+    <div class="letter-actions">
+      <button type="button" class="primary" id="letter-copy">Copy letter</button>
+      <a id="letter-open" href="#" target="_blank" rel="noopener">Open the contact form</a>
+      <span class="copied" id="letter-copied" hidden>Copied</span>
+      <button value="close">Close</button>
+    </div>
+  </form>
+</dialog>
+<script>
+/* One page for every jurisdiction, selected by ?state=. The jurisdictions do not
+   publish contact details the same way: WA publishes ministerial email addresses,
+   so the letter can open in a mail app. NSW publishes none, only a per-minister
+   contact form. The SA ministry list publishes none either, and the two address
+   patterns found in web search contradicted each other, so neither is used. Where
+   there is no verified address the letter is shown for copying and the official
+   page opens alongside it. A guessed address is worse than an extra click. */
+const STATES = {
+  wa:  { label: 'Western Australia', body: 'Ombudsman WA' },
+  nsw: { label: 'New South Wales',   body: 'the NSW Domestic Violence Death Review Team' },
+  sa:  { label: 'South Australia',   body: 'the South Australian State Coroner' },
+};
+const params = new URLSearchParams(location.search);
+const STATE_KEY = (params.get('state') || 'wa').toLowerCase();
+const JUR = STATES[STATE_KEY];
+
+const SENDER_FIELDS = ['first', 'last', 'email', 'suburb'];
+const STORAGE_KEY = 'dv_tracker_sender_v1';
+
+function loadSender() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    SENDER_FIELDS.forEach(f => { if (saved[f]) document.getElementById('f-' + f).value = saved[f]; });
+  } catch (e) {}
+}
+function saveSender() {
+  const data = {};
+  SENDER_FIELDS.forEach(f => { data[f] = document.getElementById('f-' + f).value.trim(); });
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch (e) {}
+  return data;
+}
+SENDER_FIELDS.forEach(f => document.getElementById('f-' + f).addEventListener('input', saveSender));
+loadSender();
+
+let FILTER = { status: 'all', agency: 'all' };
+let RECS = [], MINISTERS = null;
+
+const statusClass = s => 'status-' + s.replace(/\s+/g, '-');
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function truncate(t, max) { return t.length <= max ? t : t.slice(0, max).replace(/\s+\S*$/, '') + '\u2026'; }
+
+function ministerFor(rec) { return MINISTERS.agencies[rec.target_agency[0]] || null; }
+
+function buildLetter(rec) {
+  const sender = saveSender();
+  if (!sender.first || !sender.last) {
+    alert('Add your first name and surname above first. The letter is signed with it.');
+    document.getElementById('f-first').focus();
+    return null;
+  }
+  const minister = ministerFor(rec);
+  if (!minister) return null;
+  const years = rec.report_period ? ' (made in the ' + rec.report_period + ' report)' : '';
+  const subject = 'DV death review recommendation ' + rec.id + ', status: ' + rec.status;
+  const lines = [
+    'Dear Minister,',
+    '',
+    'I am writing about a recommendation from ' + JUR.body + ', "' + rec.report + '"' + years +
+      ', recommendation ' + rec.recommendation_number + ':',
+    '',
+    '"' + truncate(rec.text, 600) + '"',
+    '',
+    'Its status is recorded as "' + rec.status + '"' +
+      (rec.status_as_of ? ' as of ' + rec.status_as_of : '') +
+      '. Please tell me what has been done to action this recommendation. If it has not been ' +
+      'actioned, please tell me why not, and what the timeline is.',
+    '',
+  ];
+  if (rec.repeat_of) lines.push('This recommendation repeats an earlier one (' + rec.repeat_of +
+    '), which makes its status more pressing, not less.', '');
+  if (rec.report_url) lines.push('Source: ' + rec.report_url + (rec.page_ref ? ', ' + rec.page_ref : ''), '');
+  lines.push('Thank you for your time,', sender.first + ' ' + sender.last);
+  if (sender.suburb) lines.push(sender.suburb);
+  if (sender.email) lines.push(sender.email);
+  return { subject, body: lines.join('\n'), minister };
+}
+
+const panel = document.getElementById('letter-panel');
+function openLetter(letter) {
+  document.getElementById('letter-title').textContent = 'Letter to ' + letter.minister.minister;
+  document.getElementById('letter-note').textContent =
+    JUR.label + ' publishes no ministerial email address, so copy the letter and paste it into ' +
+    'the official contact form. Subject: ' + letter.subject;
+  document.getElementById('letter-text').value = letter.body;
+  const open = document.getElementById('letter-open');
+  open.href = letter.minister.contact_url;
+  open.textContent = 'Open the contact page for ' + letter.minister.minister;
+  document.getElementById('letter-copied').hidden = true;
+  if (panel.showModal) panel.showModal(); else panel.setAttribute('open', '');
+}
+document.getElementById('letter-copy').addEventListener('click', async () => {
+  const ta = document.getElementById('letter-text');
+  try { await navigator.clipboard.writeText(ta.value); }
+  catch (e) { ta.select(); document.execCommand && document.execCommand('copy'); }
+  document.getElementById('letter-copied').hidden = false;
+});
+
+function act(rec) {
+  const letter = buildLetter(rec);
+  if (!letter) return;
+  if (letter.minister.email) {
+    location.href = 'mailto:' + letter.minister.email +
+      '?subject=' + encodeURIComponent(letter.subject) +
+      '&body=' + encodeURIComponent(letter.body);
+  } else {
+    openLetter(letter);
+  }
+}
+
+const AGENCY_LABELS = { police: 'Police', health: 'Health', 'child-protection': 'Child protection',
+  'courts-justice': 'Courts & justice', 'state-govt': 'State govt', corrections: 'Corrections',
+  other: 'Other' };
+
+function buildFilters() {
+  const counts = {}, agencies = {};
+  RECS.forEach(r => {
+    counts[r.status] = (counts[r.status] || 0) + 1;
+    r.target_agency.forEach(a => { agencies[a] = (agencies[a] || 0) + 1; });
+  });
+  const sf = document.getElementById('status-filters');
+  sf.innerHTML = '<span class="chip active" data-status="all">All statuses (' + RECS.length + ')</span>' +
+    Object.keys(counts).sort().map(s =>
+      '<span class="chip" data-status="' + esc(s) + '">' + esc(s[0].toUpperCase() + s.slice(1)) +
+      ' (' + counts[s] + ')</span>').join('');
+  const af = document.getElementById('agency-filters');
+  af.innerHTML = '<span class="chip active" data-agency="all">All agencies</span>' +
+    Object.keys(agencies).sort().map(a =>
+      '<span class="chip" data-agency="' + esc(a) + '">' + esc(AGENCY_LABELS[a] || a) +
+      ' (' + agencies[a] + ')</span>').join('');
+}
+
+function render() {
+  const list = document.getElementById('rec-list');
+  list.innerHTML = '';
+  const filtered = RECS.filter(r =>
+    (FILTER.status === 'all' || r.status === FILTER.status) &&
+    (FILTER.agency === 'all' || r.target_agency.includes(FILTER.agency)));
+  document.getElementById('count-heading').textContent = 'Recommendations (' + filtered.length + ')';
+  if (!filtered.length) {
+    list.innerHTML = '<div class="rec-card">Nothing matches those filters.</div>';
+    return;
+  }
+  filtered.forEach(rec => {
+    const minister = ministerFor(rec);
+    const card = document.createElement('div');
+    card.className = 'rec-card';
+    const who = minister ? minister.minister.replace('Hon ', '').replace(/ MLA| MLC| MP/, '') : '';
+    card.innerHTML =
+      '<div class="rec-meta"><span>' + esc(rec.id) + '</span>' +
+why(rec) +
+      '<span class="badge ' + statusClass(rec.status) + '">' + esc(rec.status) + '</span>' +
+      rec.target_agency.map(a => '<span class="badge agency">' + esc(a.replace('-', ' ')) + '</span>').join('') +
+      '</div>' +
+      '<div class="rec-text">' + esc(rec.text) + '</div>' +
+      '<div class="rec-source">' + esc(rec.report) + ' (' + esc(rec.report_period) + '), rec. ' +
+        esc(rec.recommendation_number) + (rec.page_ref ? ', ' + esc(rec.page_ref) : '') +
+        (rec.report_url ? '. <a href="https://' + esc(rec.report_url.replace(/^https?:\/\//, '')) +
+          '" target="_blank" rel="noopener">source</a>' : '') + '</div>' +
+      '<div class="rec-actions"><button class="email-btn"' + (minister ? '' : ' disabled') + '>' +
+        (minister ? 'Write to ' + esc(who) + ' about this' : 'No minister mapped') + '</button></div>';
+    const btn = card.querySelector('.email-btn');
+    if (minister) btn.addEventListener('click', () => act(rec));
+    list.appendChild(card);
+  });
+}
+function why(rec) {
+  return rec.repeat_of ? '<span class="badge agency">repeat of ' + esc(rec.repeat_of) + '</span>' : '';
+}
+
+document.getElementById('status-filters').addEventListener('click', e => {
+  if (!e.target.dataset.status) return;
+  FILTER.status = e.target.dataset.status;
+  document.querySelectorAll('#status-filters .chip').forEach(c => c.classList.toggle('active', c === e.target));
+  render();
+});
+document.getElementById('agency-filters').addEventListener('click', e => {
+  if (!e.target.dataset.agency) return;
+  FILTER.agency = e.target.dataset.agency;
+  document.querySelectorAll('#agency-filters .chip').forEach(c => c.classList.toggle('active', c === e.target));
+  render();
+});
+
+if (!JUR) {
+  document.getElementById('rec-list').innerHTML =
+    '<div class="rec-card">No action page for "' + esc(STATE_KEY) + '". Try ?state=nsw, ?state=sa or ?state=wa.</div>';
+} else {
+  Promise.all([
+    fetch('data/' + STATE_KEY + '-recommendations.json').then(r => r.json()),
+    fetch('data/' + STATE_KEY + '-ministers.json').then(r => r.json()),
+  ]).then(([recs, ministers]) => {
+    RECS = recs; MINISTERS = ministers;
+    const impl = recs.filter(r => r.status === 'implemented').length;
+    const stalled = recs.filter(r => r.status === 'not started' || r.status === 'rejected').length;
+    document.getElementById('page-h1').textContent =
+      'Email a ' + JUR.label + ' minister about an unactioned recommendation';
+    document.getElementById('page-dek').innerHTML =
+      'Pick a recommendation and write to the minister whose portfolio owns it. The letter is ' +
+      'written for you, quoting the recommendation and the status the government recorded against it.' +
+      '<br><br><strong>' + recs.length + ' recommendations</strong> from ' + JUR.body + '. ' +
+      impl + ' are confirmed implemented. ' + stalled + ' were never started or were refused.';
+    document.getElementById('page-caveat').innerHTML =
+      '<strong>"Not confirmed implemented" does not mean "confirmed failed".</strong> ' +
+      'Where a report does not state a status plainly enough to classify, the recommendation is ' +
+      'tagged unclear. That is a reason to ask, not an accusation. ' +
+      esc(ministers._note || '') +
+      ' Ministers verified ' + esc(ministers._verified) + ' against <a href="' +
+      esc(ministers._source) + '" target="_blank" rel="noopener">the official list</a>.';
+    document.getElementById('page-footer').innerHTML =
+      'Part of the <a href="index.html">dv-death-review-tracker</a>. Recommendation text and ' +
+      'status are taken verbatim from the source reports. Each card links to its source.';
+    buildFilters();
+    render();
+  }).catch(err => {
+    document.getElementById('rec-list').innerHTML =
+      '<div class="rec-card">Could not load the data: ' + esc(err.message) + '</div>';
+  });
+}
+</script>
+</body>
+</html>
