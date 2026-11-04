@@ -4,6 +4,8 @@ raw-reports/
 text/
 
 # KieranOS internal project-registry bookkeeping, not site content.
+# The glob covers the dated .damaged- copies kept after a state recovery; they
+# are rescued chat summaries, not anything this repo serves.
 meta.json
-state.json
+state.json*
 history.jsonl

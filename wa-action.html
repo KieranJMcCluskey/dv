@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WA DV death review recommendations — email your minister</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --page-plane:     #f9f9f7;
+    --surface-1:      #fcfcfb;
+    --text-primary:   #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted:     #898781;
+    --gridline:       #e1e0d9;
+    --border:         rgba(11,11,11,0.10);
+    --accent:         #2b5fb0;
+    --status-good:     #0ca30c;
+    --status-warning:  #fab219;
+    --status-serious:  #ec835a;
+    --status-critical: #d03b3b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --page-plane:     #0d0d0d;
+      --surface-1:      #1a1a19;
+      --text-primary:   #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted:     #898781;
+      --gridline:       #2c2c2a;
+      --border:         rgba(255,255,255,0.10);
+      --accent:         #6fa3ff;
+      --status-good:     #0ca30c;
+      --status-warning:  #fab219;
+      --status-serious:  #ec835a;
+      --status-critical: #d03b3b;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--page-plane); }
+  body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--text-primary); }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 48px 24px 96px; }
+  a { color: var(--accent); }
+
+  h1 { font-size: 26px; font-weight: 600; margin: 0 0 8px; }
+  .dek { color: var(--text-secondary); font-size: 16px; line-height: 1.5; margin: 0 0 8px; max-width: 640px; }
+  .back { font-size: 13px; margin-bottom: 24px; display: inline-block; }
+
+  .caveat { font-size: 13px; color: var(--text-muted); background: var(--surface-1); border: 1px solid var(--border);
+            border-radius: 8px; padding: 12px 16px; margin: 16px 0 32px; line-height: 1.5; }
+
+  h2 { font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
+       color: var(--text-muted); margin: 40px 0 14px; }
+
+  .sender-box { background: var(--surface-1); border: 1px solid var(--border); border-radius: 8px;
+                padding: 18px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; }
+  .sender-box .field { display: flex; flex-direction: column; gap: 4px; }
+  .sender-box label { font-size: 12px; color: var(--text-muted); }
+  .sender-box input { font-size: 14px; padding: 8px 10px; border: 1px solid var(--border); border-radius: 6px;
+                       background: var(--page-plane); color: var(--text-primary); font-family: inherit; }
+  .sender-box .hint { grid-column: 1 / -1; font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .chip { font-size: 13px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border);
+          background: var(--surface-1); color: var(--text-secondary); cursor: pointer; user-select: none; }
+  .chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+  .rec-list { display: flex; flex-direction: column; gap: 1px; background: var(--gridline);
+              border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .rec-card { background: var(--surface-1); padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; }
+  .rec-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 12px; color: var(--text-muted); }
+  .badge { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600;
+           padding: 3px 9px; border-radius: 999px; border: 1px solid var(--border); }
+  .badge.status-not-started { color: var(--status-critical); }
+  .badge.status-in-progress { color: #96700a; }
+  @media (prefers-color-scheme: dark) { .badge.status-in-progress { color: var(--status-warning); } }
+  .badge.status-unclear { color: var(--text-muted); }
+  .badge.agency { color: var(--text-secondary); text-transform: capitalize; }
+  .rec-text { font-size: 14px; line-height: 1.55; color: var(--text-primary); }
+  .rec-source { font-size: 12px; color: var(--text-muted); }
+  .rec-actions { margin-top: 4px; }
+  .email-btn { font-size: 13px; font-weight: 600; padding: 8px 14px; border-radius: 6px; border: none;
+               background: var(--accent); color: #fff; cursor: pointer; font-family: inherit; }
+  .email-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--gridline);
+           font-size: 12px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="index.html">&larr; Back to the tracker</a>
+  <h1>WA family &amp; domestic violence death review recommendations</h1>
+  <p class="dek">72 recommendations across three Ombudsman WA investigations (2015, 2022, 2026). None are confirmed implemented in this dataset — agencies either haven't started, say they're in progress, or haven't stated a clear status. Pick one below and email the minister whose portfolio owns it.</p>
+
+  <div class="caveat">
+    <strong>Status here means "not confirmed implemented," not "confirmed failed."</strong>
+    Most of these are tagged <em>unclear</em> because Ombudsman WA's own reporting doesn't state a status plainly enough to classify — that's a reason to ask, not an accusation. Minister contacts verified against the WA Government's own cabinet list on 2 Nov 2026; portfolios change with reshuffles, so if this page is old, double-check at <a href="https://www.wa.gov.au/government/premier-and-cabinet-ministers" target="_blank" rel="noopener">wa.gov.au/government/premier-and-cabinet-ministers</a> before sending.
+  </div>
+
+  <h2>Your details</h2>
+  <div class="sender-box">
+    <div class="field"><label for="f-first">First name</label><input id="f-first" type="text" autocomplete="given-name"></div>
+    <div class="field"><label for="f-last">Surname</label><input id="f-last" type="text" autocomplete="family-name"></div>
+    <div class="field"><label for="f-email">Your email (optional, included in signature)</label><input id="f-email" type="email" autocomplete="email"></div>
+    <div class="field"><label for="f-suburb">Suburb / electorate (optional)</label><input id="f-suburb" type="text" autocomplete="address-level2"></div>
+    <div class="hint">Saved in your browser only — never sent anywhere except into the email your mail app opens for you. Used to sign the emails below.</div>
+  </div>
+
+  <h2>Filter</h2>
+  <div class="filters" id="status-filters">
+    <span class="chip active" data-status="all">All statuses</span>
+    <span class="chip" data-status="not started">Not started (9)</span>
+    <span class="chip" data-status="in progress">In progress (9)</span>
+    <span class="chip" data-status="unclear">Unclear (54)</span>
+  </div>
+  <div class="filters" id="agency-filters">
+    <span class="chip active" data-agency="all">All agencies</span>
+    <span class="chip" data-agency="police">Police</span>
+    <span class="chip" data-agency="health">Health</span>
+    <span class="chip" data-agency="child-protection">Child protection</span>
+    <span class="chip" data-agency="courts-justice">Courts &amp; justice</span>
+    <span class="chip" data-agency="state-govt">State govt</span>
+  </div>
+
+  <h2 id="count-heading">Recommendations</h2>
+  <div class="rec-list" id="rec-list"></div>
+
+  <footer>
+    Part of the <a href="index.html">dv-death-review-tracker</a>. Recommendation text and status extracted verbatim from Ombudsman WA reports — see each card's source link. This is a WA-only pilot; other jurisdictions don't yet have per-recommendation data.
+  </footer>
+</div>
+
+<script>
+const SENDER_FIELDS = ['first', 'last', 'email', 'suburb'];
+const STORAGE_KEY = 'dv_tracker_sender_v1';
+
+function loadSender() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    SENDER_FIELDS.forEach(f => {
+      if (saved[f]) document.getElementById('f-' + f).value = saved[f];
+    });
+  } catch (e) {}
+}
+function saveSender() {
+  const data = {};
+  SENDER_FIELDS.forEach(f => { data[f] = document.getElementById('f-' + f).value.trim(); });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  return data;
+}
+SENDER_FIELDS.forEach(f => {
+  document.getElementById('f-' + f).addEventListener('input', saveSender);
+});
+loadSender();
+
+let STATE = { status: 'all', agency: 'all' };
+let RECS = [];
+let MINISTERS = null;
+
+function statusClass(status) {
+  return 'status-' + status.replace(/\s+/g, '-');
+}
+
+function truncate(text, max) {
+  if (text.length <= max) return text;
+  return text.slice(0, max).replace(/\s+\S*$/, '') + '…';
+}
+
+function buildMailto(rec) {
+  const sender = saveSender();
+  if (!sender.first || !sender.last) {
+    alert('Add your first name and surname above first — the email is signed with it.');
+    document.getElementById('f-first').focus();
+    return null;
+  }
+  const primaryAgency = rec.target_agency[0];
+  const minister = MINISTERS.agencies[primaryAgency];
+  if (!minister) {
+    alert('No minister mapped for this recommendation\'s agency (' + primaryAgency + ') yet.');
+    return null;
+  }
+  const yearsNote = rec.report_period ? ` (made in the ${rec.report_period} report)` : '';
+  const subject = `DV death review recommendation ${rec.id} — status: ${rec.status}`;
+  const bodyLines = [
+    'Dear Minister,',
+    '',
+    `I'm writing about a recommendation from Ombudsman WA's "${rec.report}"${yearsNote}, recommendation ${rec.recommendation_number}:`,
+    '',
+    `"${truncate(rec.text, 600)}"`,
+    '',
+    `Its status is currently recorded as "${rec.status}"${rec.status_as_of ? ' as of ' + rec.status_as_of : ''}. Can you tell me what has been done to action this recommendation, and if it has not been actioned, why not and what the timeline is?`,
+    '',
+    rec.report_url ? `Source: ${rec.report_url}${rec.page_ref ? ', ' + rec.page_ref : ''}` : '',
+    '',
+    'Thank you for your time,',
+    `${sender.first} ${sender.last}`,
+    sender.suburb || '',
+    sender.email || '',
+  ].filter(line => line !== '' || true); // keep blank lines for spacing
+  const body = bodyLines.join('\n');
+  return `mailto:${minister.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+function render() {
+  const list = document.getElementById('rec-list');
+  list.innerHTML = '';
+  const filtered = RECS.filter(r => {
+    if (STATE.status !== 'all' && r.status !== STATE.status) return false;
+    if (STATE.agency !== 'all' && !r.target_agency.includes(STATE.agency)) return false;
+    return true;
+  });
+  document.getElementById('count-heading').textContent = `Recommendations (${filtered.length})`;
+
+  filtered.forEach(rec => {
+    const card = document.createElement('div');
+    card.className = 'rec-card';
+    const minister = MINISTERS.agencies[rec.target_agency[0]];
+    card.innerHTML = `
+      <div class="rec-meta">
+        <span>${rec.id}</span>
+        <span class="badge ${statusClass(rec.status)}">${rec.status}</span>
+        ${rec.target_agency.map(a => `<span class="badge agency">${a.replace('-', ' ')}</span>`).join('')}
+      </div>
+      <div class="rec-text">${rec.text}</div>
+      <div class="rec-source">${rec.report} (${rec.report_period}), rec. ${rec.recommendation_number}${rec.page_ref ? ', ' + rec.page_ref : ''}
+        ${rec.report_url ? ' — <a href="https://' + rec.report_url.replace(/^https?:\/\//, '') + '" target="_blank" rel="noopener">source</a>' : ''}
+      </div>
+      <div class="rec-actions">
+        <button class="email-btn" ${minister ? '' : 'disabled'}>
+          ${minister ? 'Email ' + minister.minister.replace('Hon ', '').replace(/ MLA| MLC/, '') + ' about this' : 'No minister mapped'}
+        </button>
+      </div>
+    `;
+    card.querySelector('.email-btn').addEventListener('click', () => {
+      const href = buildMailto(rec);
+      if (href) window.location.href = href;
+    });
+    list.appendChild(card);
+  });
+}
+
+document.getElementById('status-filters').addEventListener('click', e => {
+  if (!e.target.dataset.status) return;
+  STATE.status = e.target.dataset.status;
+  document.querySelectorAll('#status-filters .chip').forEach(c => c.classList.toggle('active', c === e.target));
+  render();
+});
+document.getElementById('agency-filters').addEventListener('click', e => {
+  if (!e.target.dataset.agency) return;
+  STATE.agency = e.target.dataset.agency;
+  document.querySelectorAll('#agency-filters .chip').forEach(c => c.classList.toggle('active', c === e.target));
+  render();
+});
+
+Promise.all([
+  fetch('data/wa-recommendations.json').then(r => r.json()),
+  fetch('data/wa-ministers.json').then(r => r.json()),
+]).then(([recs, ministers]) => {
+  RECS = recs;
+  MINISTERS = ministers;
+  render();
+}).catch(err => {
+  document.getElementById('rec-list').innerHTML = '<div class="rec-card">Could not load recommendation data: ' + err.message + '</div>';
+});
+</script>
+</body>
+</html>

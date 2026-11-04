@@ -1,0 +1,97 @@
+{
+  "repeat_of": [
+    {
+      "later": "NSW-2015-2017-33",
+      "earlier": "NSW-2012-2013-9",
+      "jurisdiction": "NSW",
+      "later_period": "2015-2017",
+      "basis": "Team statement in the 2015-17 report plus cross-citation (2019-21 report, footnote 467)",
+      "note": "Both address children who survive a domestic homicide and whose carers will not engage with services - the closing clause is near-verbatim across the two. The Team wrote in the 2015-17 report that 'despite its earlier recommendations, many of the same issues continue to arise in respect of the response to surviving children of homicide'."
+    },
+    {
+      "later": "NSW-2017-2019-19",
+      "earlier": "NSW-2015-2017-17",
+      "jurisdiction": "NSW",
+      "later_period": "2017-2019",
+      "basis": "Team cross-citation (2019-21 report, footnote 649) and near-verbatim text",
+      "note": "Both ask for an interagency working group to rapidly share information between NSW Health and Justice about Community Treatment Orders. The 2017-19 version widens the addressee from NSW Health to the NSW Government and the cohort from CTO clients to mental health consumers presenting a serious risk, but the ask is the same mechanism."
+    },
+    {
+      "later": "SA-2014-2015-Abrahimzadeh-3",
+      "earlier": "SA-2012-2013-Robinson-4",
+      "jurisdiction": "SA",
+      "later_period": "2014-2015",
+      "basis": "Text comparison across inquests",
+      "note": "The same ask: domestic violence calls to the SAPOL call centre must be handled by trained sworn police officers rather than civilian call-centre staff. Robinson put it as a prohibition on administrative officers making cold calls to victims; Abrahimzadeh put it as a positive requirement that sworn officers with risk-assessment training take the calls."
+    },
+    {
+      "later": "SA-2015-2016-HardingRoots-1",
+      "earlier": "SA-2014-2015-Abrahimzadeh-1",
+      "jurisdiction": "SA",
+      "later_period": "2015-2016",
+      "basis": "Verbatim restatement, attributed by the Coroner in the recommendation itself",
+      "note": "Word-for-word the same recommendation, re-made in a later inquest: 'I recommend, as the State Coroner has recommended in the matter of the death of Mrs Zahra Abrahimzadeh, that all aspects of domestic violence policing be characterised by a sense of curiosity, questioning and listening. Risk assessment must be actually applied, not merely recited as a mantra.' No inference required - the source states the repetition."
+    }
+  ],
+  "related_to": [
+    {
+      "from": "NSW-2013-2015-10",
+      "to": "NSW-2012-2013-3",
+      "jurisdiction": "NSW",
+      "note": "Carried forward rather than restated. The 2013-15 report asks Justice to keep informing DVSAT evaluations, and in its commentary the Team 'reiterates the need to consider Recommendation 3 from the 2012/13 Report when evaluating the use of the DVSAT in NSW' - that earlier recommendation having asked for two specific questions to be added."
+    },
+    {
+      "from": "NSW-2013-2015-14",
+      "to": "NSW-2012-2013-4",
+      "jurisdiction": "NSW",
+      "note": "Same measure, new target: a quick-close button and browser-history guidance on domestic violence web pages, asked of the NSW Police Force in 2012-13 and of the federal family courts in 2013-15."
+    },
+    {
+      "from": "NSW-2012-2013-5",
+      "to": "NSW-2011-2012-4",
+      "jurisdiction": "NSW",
+      "note": "Same measure, new circumstance: amend NSW Police standard operating procedures to require a COPS event be created - for child-custody advice in 2011-12, for mental health detention assessments and directions in 2012-13."
+    },
+    {
+      "from": "NSW-2015-2017-9",
+      "to": "NSW-2012-2013-16",
+      "jurisdiction": "NSW",
+      "note": "Same measure, new profession: equip health practitioners to recognise domestic violence and refer on - assisted reproductive services in 2012-13, primary care in 2015-17."
+    },
+    {
+      "from": "NSW-2017-2019-11",
+      "to": "NSW-2015-2017-5.1",
+      "jurisdiction": "NSW",
+      "note": "Successor on the same harm, not a restatement. The 2015-17 recommendation asked the Attorney General to review whether the s37 strangulation offence was working; the government records that the simplified offence in the Crimes Legislation Amendment Act 2018 was made in response to it. The 2017-19 recommendation then asks for judicial education on non-fatal strangulation - a different ask on the same subject."
+    },
+    {
+      "from": "NSW-2017-2019-33",
+      "to": "NSW-2011-2012-1",
+      "jurisdiction": "NSW",
+      "note": "The earlier recommendation was implemented and then found insufficient - not the same ask twice. In 2011-12 the Team asked that s101B(1) of the Coroners Act 2009 (NSW) be broadened so a 'domestic violence death' covered deaths caused by someone in a domestic relationship with the deceased and deaths of third parties to such a relationship; the government records that as 'completed and implemented by amendments to the Coroners Act 2009 (NSW) in 2013'. In 2017-19 the Team went further and asked that the definition become simply 'a death which occurs in the context of domestic violence', with the reference to relationship omitted altogether. As of the last published update that second change had an expected completion date of end-2021 and no confirmation."
+    },
+    {
+      "from": "SA-2014-2015-Abrahimzadeh-3",
+      "to": "SA-2012-2013-Robinson-3",
+      "jurisdiction": "SA",
+      "note": "Adjacent ask in the same inquest set: Robinson-3 asks that call-centre staff and officers receive regular training on responding to domestic violence disclosures, where Abrahimzadeh-3 asks who should take the calls at all."
+    },
+    {
+      "from": "SA-2017-2018-McKenzie-9",
+      "to": "SA-2011-2012-Hayward-Durance-1",
+      "jurisdiction": "SA",
+      "note": "Same problem, different instrument: bail in alleged domestic violence matters. The 2011-12 recommendation sought an amendment to the Bail Act 1985 so only a Court could grant bail; the 2017-18 one seeks education of police prosecutors on their existing duties under s10A. Not the same ask."
+    },
+    {
+      "from": "WA-2026-2",
+      "to": "WA-2015-54",
+      "jurisdiction": "WA",
+      "note": "Same instrument, different subject: review the barriers then publish an action plan. In 2015 the subject was implementation of family and domestic violence policy and practice guidance; in 2026 it was FDVRT compliance with record keeping, risk assessment and escalation to Multi-Agency Case Management."
+    }
+  ],
+  "notes": {
+    "WA": "No repeat_of links found at similarity >= 0.22 across the three report periods. One same-instrument link recorded as related_to. WA's reports are discrete investigations rather than a recurring cycle, so there is no mechanism by which a recommendation would be formally re-made.",
+    "SA": "Two repeat_of links, one of them verbatim and attributed by the Coroner. SA's recommendations are per-inquest, so a repeat here means a different death produced the same finding - arguably the strongest form of this signal available.",
+    "NSW": "Two repeat_of links from 15 similarity candidates and 23 Team cross-citation groups. Two further candidates were demoted to related_to only after reading the full texts."
+  }
+}

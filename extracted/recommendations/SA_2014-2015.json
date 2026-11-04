@@ -10,13 +10,19 @@
     "case_name": "Zahra Abrahimzadeh",
     "recommendation_number": 1,
     "recommendation_text": "I recommend that all aspects of domestic violence policing be characterised by a sense of curiosity, questioning and listening. Risk assessment must be actually applied, not merely recited as a mantra.",
-    "target_agency": ["police", "state-govt"],
+    "target_agency": [
+      "police",
+      "state-govt"
+    ],
     "status": "unclear",
     "status_as_of": null,
     "first_appeared_year": 2015,
     "repeat_of": null,
     "_note": "Unusually, the Coroner directed these recommendations to the Premier rather than the Commissioner of Police, 'given that this Inquest is about domestic violence, an issue which has recently been described by the Premier as a key priority of the Government.'",
-    "source_quote": null
+    "source_quote": null,
+    "repeat_basis": null,
+    "repeat_note": null,
+    "related_to": []
   },
   {
     "id": "SA-2014-2015-Abrahimzadeh-2",
@@ -29,12 +35,18 @@
     "case_name": "Zahra Abrahimzadeh",
     "recommendation_number": 2,
     "recommendation_text": "I recommend that the SAPOL Criminal Justice Section be staffed by legal practitioners so that domestic violence restraining orders can be properly presented before magistrates.",
-    "target_agency": ["police", "state-govt"],
+    "target_agency": [
+      "police",
+      "state-govt"
+    ],
     "status": "unclear",
     "status_as_of": null,
     "first_appeared_year": 2015,
     "repeat_of": null,
-    "source_quote": null
+    "source_quote": null,
+    "repeat_basis": null,
+    "repeat_note": null,
+    "related_to": []
   },
   {
     "id": "SA-2014-2015-Abrahimzadeh-3",
@@ -47,12 +59,23 @@
     "case_name": "Zahra Abrahimzadeh",
     "recommendation_number": 3,
     "recommendation_text": "I recommend that all domestic violence calls to the SAPOL call centre are handled by sworn police officers with particular training in domestic violence risk assessment.",
-    "target_agency": ["police", "state-govt"],
+    "target_agency": [
+      "police",
+      "state-govt"
+    ],
     "status": "unclear",
     "status_as_of": null,
     "first_appeared_year": 2015,
-    "repeat_of": null,
-    "source_quote": null
+    "repeat_of": "SA-2012-2013-Robinson-4",
+    "source_quote": null,
+    "repeat_basis": "Text comparison across inquests",
+    "repeat_note": "The same ask: domestic violence calls to the SAPOL call centre must be handled by trained sworn police officers rather than civilian call-centre staff. Robinson put it as a prohibition on administrative officers making cold calls to victims; Abrahimzadeh put it as a positive requirement that sworn officers with risk-assessment training take the calls.",
+    "related_to": [
+      {
+        "id": "SA-2012-2013-Robinson-3",
+        "note": "Adjacent ask in the same inquest set: Robinson-3 asks that call-centre staff and officers receive regular training on responding to domestic violence disclosures, where Abrahimzadeh-3 asks who should take the calls at all."
+      }
+    ]
   },
   {
     "id": "SA-2014-2015-Abrahimzadeh-4",
@@ -65,12 +88,18 @@
     "case_name": "Zahra Abrahimzadeh",
     "recommendation_number": 4,
     "recommendation_text": "I recommend that the domestic violence training that cadets receive at the Police Academy from external domestic violence agencies occupy at least one day, rather than the half day that it has been reduced to.",
-    "target_agency": ["police", "state-govt"],
+    "target_agency": [
+      "police",
+      "state-govt"
+    ],
     "status": "unclear",
     "status_as_of": null,
     "first_appeared_year": 2015,
     "repeat_of": null,
-    "source_quote": null
+    "source_quote": null,
+    "repeat_basis": null,
+    "repeat_note": null,
+    "related_to": []
   },
   {
     "id": "SA-2014-2015-Abrahimzadeh-5",
@@ -83,12 +112,18 @@
     "case_name": "Zahra Abrahimzadeh",
     "recommendation_number": 5,
     "recommendation_text": "I recommend that all domestic violence safe houses be flagged with police communications in order to ensure consistency of approach when a response to an incident or report is made.",
-    "target_agency": ["police", "state-govt"],
+    "target_agency": [
+      "police",
+      "state-govt"
+    ],
     "status": "unclear",
     "status_as_of": null,
     "first_appeared_year": 2015,
     "repeat_of": null,
-    "source_quote": null
+    "source_quote": null,
+    "repeat_basis": null,
+    "repeat_note": null,
+    "related_to": []
   },
   {
     "id": "SA-2014-2015-Abrahimzadeh-6",
@@ -101,12 +136,18 @@
     "case_name": "Zahra Abrahimzadeh",
     "recommendation_number": 6,
     "recommendation_text": "I recommend that prosecutors appearing in domestic violence matters must, as a matter of course, seek out all available information about the longitudinal history of the domestic violence offending, particularly from Family Court documents if those exist.",
-    "target_agency": ["courts-justice", "state-govt"],
+    "target_agency": [
+      "courts-justice",
+      "state-govt"
+    ],
     "status": "unclear",
     "status_as_of": null,
     "first_appeared_year": 2015,
     "repeat_of": null,
-    "source_quote": null
+    "source_quote": null,
+    "repeat_basis": null,
+    "repeat_note": null,
+    "related_to": []
   },
   {
     "id": "SA-2014-2015-Abrahimzadeh-7",
@@ -119,12 +160,18 @@
     "case_name": "Zahra Abrahimzadeh",
     "recommendation_number": 7,
     "recommendation_text": "I recommend that prosecutors appearing in domestic violence matters must, as a matter of course, establish the outcome of the offence PIRs underlying the application.",
-    "target_agency": ["courts-justice", "state-govt"],
+    "target_agency": [
+      "courts-justice",
+      "state-govt"
+    ],
     "status": "unclear",
     "status_as_of": null,
     "first_appeared_year": 2015,
     "repeat_of": null,
-    "source_quote": null
+    "source_quote": null,
+    "repeat_basis": null,
+    "repeat_note": null,
+    "related_to": []
   },
   {
     "id": "SA-2014-2015-Abrahimzadeh-8",
@@ -137,12 +184,18 @@
     "case_name": "Zahra Abrahimzadeh",
     "recommendation_number": 8,
     "recommendation_text": "I recommend that police officers do not ask domestic violence complainants whether they still wish to proceed unless there is some communication from the complainant that justifies such an enquiry.",
-    "target_agency": ["police", "state-govt"],
+    "target_agency": [
+      "police",
+      "state-govt"
+    ],
     "status": "unclear",
     "status_as_of": null,
     "first_appeared_year": 2015,
     "repeat_of": null,
-    "source_quote": null
+    "source_quote": null,
+    "repeat_basis": null,
+    "repeat_note": null,
+    "related_to": []
   },
   {
     "id": "SA-2014-2015-Abrahimzadeh-9",
@@ -155,11 +208,17 @@
     "case_name": "Zahra Abrahimzadeh",
     "recommendation_number": 9,
     "recommendation_text": "I recommend that when a domestic violence victim makes a report at a police station, they are afforded an opportunity of privacy in an interview room.",
-    "target_agency": ["police", "state-govt"],
+    "target_agency": [
+      "police",
+      "state-govt"
+    ],
     "status": "unclear",
     "status_as_of": null,
     "first_appeared_year": 2015,
     "repeat_of": null,
-    "source_quote": null
+    "source_quote": null,
+    "repeat_basis": null,
+    "repeat_note": null,
+    "related_to": []
   }
 ]

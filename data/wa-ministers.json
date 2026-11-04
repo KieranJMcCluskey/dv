@@ -1,0 +1,32 @@
+{
+  "_verified": "2026-11-02",
+  "_source": "https://www.wa.gov.au/system/files/2026-08/wa-government-cabinet-ministers.pdf",
+  "_note": "WA cabinet reshuffled 3 Aug 2026 after Paul Papalia's resignation. Re-check this file against the current wa.gov.au cabinet list before relying on it for an advocacy campaign — portfolios move.",
+  "agencies": {
+    "police": {
+      "minister": "Hon Reece Whitby MLA",
+      "portfolio": "Minister for Police; Emergency Services; Great Southern",
+      "email": "Minister.Whitby@dpc.wa.gov.au"
+    },
+    "health": {
+      "minister": "Hon Meredith Hammat MLA",
+      "portfolio": "Minister for Health; Mental Health; Preventative Health",
+      "email": "Minister.Hammat@dpc.wa.gov.au"
+    },
+    "child-protection": {
+      "minister": "Hon Jessica Stojkovski MLA",
+      "portfolio": "Minister for Child Protection; Prevention of Family and Domestic Violence; Road Safety; Multicultural Interests; Peel",
+      "email": "Minister.Stojkovski@dpc.wa.gov.au"
+    },
+    "courts-justice": {
+      "minister": "Hon Dr Tony Buti MLA",
+      "portfolio": "Attorney General; Minister for Corrective Services; Commerce; Tertiary and International Education",
+      "email": "Minister.Buti@dpc.wa.gov.au"
+    },
+    "state-govt": {
+      "minister": "Hon Roger Cook MLA",
+      "portfolio": "Premier; Minister for Defence Industries; Tourism, Trade and Investment",
+      "email": "wa-government@dpc.wa.gov.au"
+    }
+  }
+}

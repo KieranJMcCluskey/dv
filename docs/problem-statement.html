@@ -1,0 +1,712 @@
+<title>Counted, Not Tracked</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --ground:    #f6f5f3;
+    --surface:   #fffefd;
+    --ink:       #1c1a19;
+    --ink-soft:  #5b5553;
+    --ink-faint: #857e7a;
+    --rule:      #dcd8d5;
+    --rule-firm: #bdb7b2;
+    --accent:    #7a2230;
+    --accent-bg: #f0e4e3;
+    --unknown:   #b3aba6;
+
+    --serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+    --sans:  "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+
+    --measure: 68ch;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:    #161514;
+      --surface:   #1e1c1b;
+      --ink:       #e9e6e3;
+      --ink-soft:  #a8a29d;
+      --ink-faint: #7d766f;
+      --rule:      #322f2d;
+      --rule-firm: #4a4642;
+      --accent:    #d08b93;
+      --accent-bg: #2e1f21;
+      --unknown:   #565049;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground:    #161514;
+    --surface:   #1e1c1b;
+    --ink:       #e9e6e3;
+    --ink-soft:  #a8a29d;
+    --ink-faint: #7d766f;
+    --rule:      #322f2d;
+    --rule-firm: #4a4642;
+    --accent:    #d08b93;
+    --accent-bg: #2e1f21;
+    --unknown:   #565049;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 1.0625rem;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page { max-width: 46rem; margin: 0 auto; padding: 0 1.5rem 6rem; }
+
+  /* ---- masthead ---------------------------------------------------- */
+  .masthead { padding: 3.5rem 0 2rem; border-bottom: 1px solid var(--rule-firm); }
+  .eyebrow {
+    font-family: var(--sans); font-size: .6875rem; font-weight: 600;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint);
+    margin: 0 0 1.5rem;
+  }
+  h1 {
+    font-family: var(--serif); font-weight: 500; font-size: clamp(2.4rem, 7vw, 3.6rem);
+    line-height: 1.04; letter-spacing: -.02em; margin: 0 0 1rem; text-wrap: balance;
+  }
+  .standfirst {
+    font-size: 1.1875rem; line-height: 1.55; color: var(--ink-soft);
+    max-width: 34rem; margin: 0 0 1.75rem;
+  }
+  .byline {
+    font-family: var(--sans); font-size: .75rem; color: var(--ink-faint);
+    display: flex; flex-wrap: wrap; gap: .4rem 1.25rem;
+  }
+
+  /* ---- thesis ------------------------------------------------------ */
+  .thesis {
+    margin: 2.5rem 0 0; padding: 1.75rem 0 1.75rem 1.5rem;
+    border-left: 3px solid var(--accent);
+  }
+  .thesis p { margin: 0; font-size: 1.3125rem; line-height: 1.42; font-weight: 400; }
+  .thesis p + p { margin-top: .85rem; font-size: 1.0625rem; line-height: 1.6; color: var(--ink-soft); }
+  .thesis strong { font-weight: 600; }
+
+  /* ---- sections ---------------------------------------------------- */
+  section { margin-top: 4rem; }
+  h2 {
+    font-family: var(--serif); font-weight: 500; font-size: 1.75rem;
+    line-height: 1.2; letter-spacing: -.01em; margin: 0 0 .25rem;
+    display: flex; gap: .85rem; align-items: baseline; text-wrap: balance;
+  }
+  h2 .num {
+    font-family: var(--sans); font-size: .75rem; font-weight: 600;
+    color: var(--accent); letter-spacing: .06em;
+    flex: none; transform: translateY(-.35em);
+  }
+  .deck {
+    font-family: var(--sans); font-size: .8125rem; color: var(--ink-faint);
+    margin: 0 0 1.75rem 2.1rem; padding-bottom: 1rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  h3 {
+    font-family: var(--sans); font-size: .8125rem; font-weight: 600;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft);
+    margin: 2.75rem 0 .9rem;
+  }
+  p { max-width: var(--measure); margin: 0 0 1.1rem; }
+  a { color: var(--ink); text-decoration-color: var(--rule-firm); text-underline-offset: .18em; }
+  a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+  em { font-style: italic; }
+  strong { font-weight: 600; }
+
+  /* ---- hero figures ------------------------------------------------ */
+  .figures {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+    margin: 0 0 1.75rem;
+  }
+  .fig { background: var(--surface); padding: 1.25rem 1.1rem 1.1rem; }
+  .fig .n {
+    font-family: var(--serif); font-size: 2.75rem; font-weight: 400;
+    line-height: 1; letter-spacing: -.03em; font-variant-numeric: tabular-nums;
+    display: block; margin-bottom: .45rem;
+  }
+  .fig .n.grave { color: var(--accent); }
+  .fig .lbl {
+    font-family: var(--sans); font-size: .75rem; line-height: 1.4;
+    color: var(--ink-soft);
+  }
+
+  /* ---- tables ------------------------------------------------------ */
+  .scroll { overflow-x: auto; margin: 0 0 .75rem; -webkit-overflow-scrolling: touch; }
+  table {
+    border-collapse: collapse; width: 100%; min-width: 24rem;
+    font-family: var(--sans); font-size: .8125rem;
+  }
+  caption {
+    text-align: left; font-family: var(--sans); font-size: .75rem; font-weight: 600;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--ink-faint);
+    padding-bottom: .65rem;
+  }
+  th, td { padding: .5rem .7rem; border-bottom: 1px solid var(--rule); text-align: left; }
+  thead th {
+    font-weight: 600; color: var(--ink-soft); border-bottom: 1px solid var(--rule-firm);
+    font-size: .75rem; letter-spacing: .03em;
+  }
+  td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
+  tbody tr:last-child td { border-bottom: none; }
+  tr.total td {
+    border-top: 1px solid var(--rule-firm); font-weight: 600;
+    border-bottom: none; background: var(--surface);
+  }
+  td.unit { color: var(--ink-faint); }
+
+  /* ---- rate scale -------------------------------------------------- */
+  .scale { margin: 1.25rem 0 1rem; }
+  .scale-track {
+    position: relative; height: 2.5rem;
+    border-bottom: 1px solid var(--rule-firm);
+  }
+  .scale-track::before {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+  }
+  .mark { position: absolute; bottom: 0; transform: translateX(-50%); text-align: center; }
+  .mark .stem { width: 1px; height: 1.1rem; background: var(--rule-firm); margin: 0 auto; }
+  .mark.hi .stem { background: var(--accent); height: 2.5rem; }
+  .mark .v {
+    font-family: var(--sans); font-size: .8125rem; font-weight: 600;
+    font-variant-numeric: tabular-nums; display: block; margin-bottom: .2rem;
+    white-space: nowrap;
+  }
+  .mark.hi .v { color: var(--accent); }
+  .scale-axis {
+    display: flex; justify-content: space-between;
+    font-family: var(--sans); font-size: .6875rem; color: var(--ink-faint);
+    padding-top: .4rem;
+  }
+  .mark .who {
+    font-family: var(--sans); font-size: .6875rem; color: var(--ink-faint);
+    display: block; white-space: nowrap;
+  }
+
+  /* ---- status bar -------------------------------------------------- */
+  .statusbar { display: flex; height: 2.75rem; margin: 1.25rem 0 .9rem; overflow: hidden; }
+  /* A fixed data palette, deliberately theme-independent: these five swatches
+     carry meaning and must read identically in both themes, so each sets its
+     own background and text colour rather than inheriting a token. */
+  .statusbar > div {
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--sans); font-size: .75rem; font-weight: 600;
+    color: #f6f5f3; font-variant-numeric: tabular-nums;
+  }
+  .s-unknown { background: #b3aba6; color: #1c1a19; }
+  .s-prog    { background: #566761; }
+  .s-impl    { background: #3f4f48; }
+  .s-not     { background: #7a2230; }
+  .s-rej     { background: #40131c; }
+  .legend {
+    display: flex; flex-wrap: wrap; gap: .4rem 1.1rem;
+    font-family: var(--sans); font-size: .75rem; color: var(--ink-soft);
+  }
+  .legend span { display: flex; align-items: center; gap: .4rem; }
+  .legend i { width: .7rem; height: .7rem; flex: none; }
+
+  /* ---- pull quote -------------------------------------------------- */
+  blockquote {
+    margin: 2rem 0; padding: 1.5rem 1.6rem; background: var(--accent-bg);
+    border-left: 3px solid var(--accent);
+  }
+  blockquote p { font-size: 1.1875rem; line-height: 1.45; margin: 0 0 .7rem; max-width: none; }
+  blockquote p:last-child { margin: 0; }
+  blockquote cite {
+    font-family: var(--sans); font-size: .75rem; font-style: normal;
+    color: var(--ink-soft); display: block;
+  }
+
+  /* ---- limit note -------------------------------------------------- */
+  .limit {
+    font-family: var(--sans); font-size: .8125rem; line-height: 1.55;
+    color: var(--ink-soft); border-top: 1px solid var(--rule);
+    padding-top: .7rem; margin: 0 0 1.5rem; max-width: var(--measure);
+  }
+  .limit b {
+    font-weight: 600; color: var(--ink-faint); text-transform: uppercase;
+    letter-spacing: .07em; font-size: .6875rem; display: block; margin-bottom: .2rem;
+  }
+
+  /* ---- lists ------------------------------------------------------- */
+  ul, ol { max-width: var(--measure); padding-left: 1.2rem; margin: 0 0 1.2rem; }
+  li { margin-bottom: .55rem; }
+  ol.questions { list-style: none; padding: 0; counter-reset: q; max-width: var(--measure); }
+  ol.questions > li {
+    counter-increment: q; position: relative;
+    padding: 1.1rem 0 1.1rem 2.6rem; border-bottom: 1px solid var(--rule); margin: 0;
+  }
+  ol.questions > li::before {
+    content: counter(q); position: absolute; left: 0; top: 1.15rem;
+    font-family: var(--sans); font-size: .8125rem; font-weight: 600; color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  ol.questions > li > b {
+    display: block; font-family: var(--sans); font-size: .9375rem;
+    font-weight: 600; margin-bottom: .3rem;
+  }
+  ol.questions > li > span { color: var(--ink-soft); font-size: 1rem; }
+
+  .steps { list-style: none; padding: 0; counter-reset: s; max-width: var(--measure); }
+  .steps > li {
+    counter-increment: s; position: relative; padding-left: 3.1rem;
+    margin-bottom: 1.4rem;
+  }
+  .steps > li::before {
+    content: "0" counter(s); position: absolute; left: 0; top: .1rem;
+    font-family: var(--sans); font-size: 1.375rem; font-weight: 600;
+    color: var(--rule-firm); font-variant-numeric: tabular-nums; line-height: 1;
+  }
+  .steps > li b { display: block; font-family: var(--sans); font-size: .9375rem; margin-bottom: .2rem; }
+
+  /* ---- sources ----------------------------------------------------- */
+  .sources { margin-top: 4rem; padding-top: 1.75rem; border-top: 1px solid var(--rule-firm); }
+  .sources ul { list-style: none; padding: 0; max-width: none; }
+  .sources li {
+    font-family: var(--sans); font-size: .8125rem; line-height: 1.5;
+    color: var(--ink-soft); padding: .6rem 0; border-bottom: 1px solid var(--rule);
+  }
+  .sources code {
+    font-family: var(--sans); font-size: .78125rem; background: var(--surface);
+    border: 1px solid var(--rule); padding: .05rem .3rem; border-radius: 2px;
+    color: var(--ink-soft);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+  @media (max-width: 34rem) {
+    .fig .n { font-size: 2.25rem; }
+    .thesis { padding-left: 1.1rem; }
+    h2 { gap: .6rem; }
+    .deck { margin-left: 0; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <p class="eyebrow">Problem statement · Draft</p>
+    <h1>Counted, Not&nbsp;Tracked</h1>
+    <p class="standfirst">
+      Australia counts its domestic homicides well. Nothing counts whether anything was
+      ever done about why they happened.
+    </p>
+    <div class="byline">
+      <span>DV Death Review Recommendation Tracker</span>
+      <span>4 November 2026</span>
+      <span>Every figure sourced; every limit stated</span>
+    </div>
+  </header>
+
+  <div class="thesis">
+    <p>
+      The deaths are counted. <strong>The recommendations are not.</strong>
+    </p>
+    <p>
+      A national, per-state, consistently defined count of domestic homicide already exists
+      and is published every year by the Australian Institute of Criminology. It covers all
+      eight jurisdictions — including the two that have no death review body at all. We
+      should cite it, not rebuild it. What exists nowhere is a register of what the review
+      bodies <em>recommended</em> after those deaths, and whether governments did it.
+    </p>
+  </div>
+
+  <section>
+    <h2><span class="num">01</span> How many people die</h2>
+    <p class="deck">National Homicide Monitoring Program · 1 July 2024 – 30 June 2025</p>
+
+    <div class="figures">
+      <div class="fig">
+        <span class="n">279</span>
+        <span class="lbl">homicide victims in Australia</span>
+      </div>
+      <div class="fig">
+        <span class="n grave">90</span>
+        <span class="lbl">domestic homicide incidents — 34% of all homicide incidents</span>
+      </div>
+      <div class="fig">
+        <span class="n">46</span>
+        <span class="lbl">intimate partner homicide deaths, down 16 on the year</span>
+      </div>
+    </div>
+
+    <p>
+      A third of the people killed in Australia are killed by family. The intimate partner
+      figure fell by 16 deaths on the previous year, the third-lowest rate recorded — and the
+      national domestic homicide rate was 0.33 per 100,000.
+    </p>
+
+    <div class="scroll">
+      <table>
+        <caption>Domestic homicide incidents by jurisdiction</caption>
+        <thead>
+          <tr><th>Jurisdiction</th><th class="n">2024–25</th><th class="n">2023–24</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>New South Wales</td><td class="n">23</td><td class="n">26</td></tr>
+          <tr><td>Victoria</td><td class="n">15</td><td class="n">13</td></tr>
+          <tr><td>Queensland</td><td class="n">22</td><td class="n">15</td></tr>
+          <tr><td>Western Australia</td><td class="n">14</td><td class="n">16</td></tr>
+          <tr><td>South Australia</td><td class="n">4</td><td class="n">8</td></tr>
+          <tr><td>Tasmania</td><td class="n">1</td><td class="n">3</td></tr>
+          <tr><td>Australian Capital Territory</td><td class="n">0</td><td class="n">3</td></tr>
+          <tr><td>Northern Territory</td><td class="n">11</td><td class="n">4</td></tr>
+          <tr class="total"><td>Australia</td><td class="n">90</td><td class="n">88</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="limit">
+      <b>Limit of this check</b>
+      Both columns sum exactly to their stated totals, and the 2023–24 breakdown by type
+      (intimate partner 55, parricide 18, filicide 6, other family 6, siblicide 3) also sums
+      to 88. That is the only internal check available on figures read from a published
+      summary rather than from the underlying rows.
+    </p>
+
+    <h3>The spread the national average hides</h3>
+    <div class="scale">
+      <div class="scale-track">
+        <div class="mark hi" style="left:5.5%">
+          <span class="v">0.19</span><div class="stem"></div><span class="who">VIC</span>
+        </div>
+        <div class="mark hi" style="left:91%">
+          <span class="v">1.58</span><div class="stem"></div><span class="who">NT</span>
+        </div>
+      </div>
+      <div class="scale-axis"><span>0</span><span>domestic homicides per 100,000 · 2023–24</span><span>1.75</span></div>
+    </div>
+    <p>
+      An <strong>eight-fold difference</strong> between the safest and the most dangerous
+      jurisdiction to live in. A single national number conceals the whole finding.
+    </p>
+    <p class="limit">
+      <b>Note</b>
+      These two rates are 2023–24. The 0.33 national rate above is 2024–25. The published
+      figures for the intervening jurisdictions were not obtained, so only the two endpoints
+      are plotted rather than an invented distribution.
+    </p>
+
+    <h3>&ldquo;Running total&rdquo; — the honest answer</h3>
+    <p>
+      There is no official running count, and this is the one real gap in the death data.
+      <em>Homicide in Australia 2024–25</em> was published in February 2026 and its data
+      stops at 30 June 2025. So today the most recent official national count covers a year
+      that ended <strong>sixteen months ago</strong>, and the next release is not due until
+      around February 2027. Nobody official can tell you how many women were killed last
+      month.
+    </p>
+    <p>
+      Live tallies exist outside government — volunteer-maintained counts such as Counting
+      Dead Women. <strong>None has been verified here and this document quotes no figure from
+      them.</strong> They count a different population (all violent deaths of women, not
+      domestic homicide specifically) and they are not official. Using one is a trade-off,
+      and it is left as an open question below rather than assumed.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">02</span> Why the states can&rsquo;t supply a national total</h2>
+    <p class="deck">Each review body publishes on its own definition, unit and period</p>
+
+    <div class="scroll">
+      <table>
+        <caption>What each jurisdiction's review body publishes</caption>
+        <thead>
+          <tr><th>Body</th><th>Period</th><th class="n">Count</th><th>Unit</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>NSW — DVDRT</td><td>Jul 2000 – Jun 2022 <span style="color:var(--ink-faint)">(22 yrs)</span></td>
+            <td class="n">550</td><td class="unit">deceased persons</td>
+          </tr>
+          <tr>
+            <td>QLD — DFVDRAB</td><td>Jul 2019 – Jun 2025 <span style="color:var(--ink-faint)">(6 yrs)</span></td>
+            <td class="n">114</td><td class="unit">homicide events</td>
+          </tr>
+          <tr>
+            <td>WA — Ombudsman</td><td>Jul 2012 – Jun 2025 <span style="color:var(--ink-faint)">(13 yrs)</span></td>
+            <td class="n">237</td><td class="unit">fatalities notified</td>
+          </tr>
+          <tr>
+            <td>SA — State Coroner</td><td>—</td>
+            <td class="n">nil</td><td class="unit">nothing since 2017–18</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      These cannot be added together or compared. The periods differ by a factor of nearly
+      four, the units are three different things, the definitions differ
+      (<em>DV-context</em> vs <em>DFV-related</em> vs <em>FDV</em>), and half the country is
+      absent. Anyone presenting a national figure built by summing these is presenting an
+      artefact.
+    </p>
+    <p>
+      NSW's 550 sits inside 1,832 homicides over the same 22 years — 30% — and breaks down as
+      308 intimate partner, 96 filicide, 91 relative/kin and 55 other. Its own chapters quote
+      different denominators for the same groups, because each table uses the subset for
+      which that variable was known. Not an error, but it means a number must always be
+      quoted with its table.
+    </p>
+
+    <h3>They do cross-check against the national series</h3>
+    <p>
+      NSW's 550 over 22 years is about <strong>25 deaths a year</strong>, against the AIC's 23
+      and 26 incidents for NSW. Queensland's 134 deaths over 6 years is about
+      <strong>22</strong>, against 22 and 15. Western Australia's 237 over 13 years is about
+      <strong>18</strong>, against 14 and 16.
+    </p>
+    <p class="limit">
+      <b>Not a reconciliation</b>
+      Incidents are not deceased persons, so these figures are not expected to match and have
+      not been made to. The point is weaker and still useful: two independent data systems
+      land in the same place in three jurisdictions, which is enough to trust the AIC series
+      for a public-facing counter.
+    </p>
+
+    <h3>Two findings in the gaps</h3>
+    <p>
+      <strong>South Australia has stopped reporting.</strong> Across the seventeen SA
+      State Coroner annual reports collected, the word &ldquo;homicide&rdquo; appears
+      <strong>zero times in every report from 2018–19 onward</strong> — while
+      &ldquo;coroner&rdquo; appears 76 to 129 times in those same files. So this is the
+      reports' content, not a failed text extraction. The last SA report with substantial DV
+      content was 2017–18.
+    </p>
+    <p class="limit">
+      <b>Limit of this check</b>
+      It covers the State Coroner's <em>annual reports</em>, the only SA series collected. SA
+      publishes individual inquest findings separately and those were not examined. The claim
+      is that SA's annual reporting carries no DV death count — not that SA reviews nothing.
+    </p>
+    <p>
+      <strong>Two jurisdictions review nothing, and still bury people.</strong> Tasmania is
+      the only state or territory with no domestic violence death review team; family-violence
+      deaths are examined only by a coroner and those investigations are often not released
+      publicly. A Coroners Act review was underway as of July 2026. The ACT has no standing
+      team either, though its Domestic Violence Prevention Council has done review work.
+      Victoria's Family Violence Reform Implementation Monitor tracked all 227 Royal
+      Commission recommendations annually, then closed on 31 December 2022; monitoring moved
+      inside the Department of Premier and Cabinet and is no longer independent or annual.
+    </p>
+    <p>
+      The AIC still counts these deaths — Tasmania 1 and 3, the ACT 0 and 3 across the two
+      most recent years. Small numbers, and nobody is asking why any of them happened.
+    </p>
+    <p class="limit">
+      <b>Unverified — must be checked before publication</b>
+      The ACT's current review status rests on a 2016 Australian Human Rights Commission call,
+      which is ten years old and should not be cited as current.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">03</span> What happened to the recommendations</h2>
+    <p class="deck">New South Wales, fully extracted — the proof of concept</p>
+
+    <div class="figures">
+      <div class="fig">
+        <span class="n">122</span>
+        <span class="lbl">recommendations made, 2011&ndash;2019</span>
+      </div>
+      <div class="fig">
+        <span class="n grave">2021</span>
+        <span class="lbl">the most recent government word on any of them</span>
+      </div>
+      <div class="fig">
+        <span class="n grave">9</span>
+        <span class="lbl">refused outright or never started</span>
+      </div>
+    </div>
+
+    <p>
+      The count of 122 was reconciled against the Team's own published total, arrived at
+      independently from five separate report chapters. Of the 125 rows those
+      recommendations produce — three are split into lettered sub-parts — the status
+      distribution is this:
+    </p>
+
+    <div class="statusbar" role="img" aria-label="Of 125 NSW recommendation rows: 51 unclear, 46 in progress, 19 implemented, 6 not started, 3 rejected.">
+      <div class="s-unknown" style="flex:51">51</div>
+      <div class="s-prog"    style="flex:46">46</div>
+      <div class="s-impl"    style="flex:19">19</div>
+      <div class="s-not"     style="flex:6">6</div>
+      <div class="s-rej"     style="flex:3">3</div>
+    </div>
+    <div class="legend">
+      <span><i class="s-unknown"></i>Status unknown · 51</span>
+      <span><i class="s-prog"></i>In progress · 46</span>
+      <span><i class="s-impl"></i>Implemented · 19</span>
+      <span><i class="s-not"></i>Not started · 6</span>
+      <span><i class="s-rej"></i>Rejected · 3</span>
+    </div>
+
+    <p>
+      <strong>The largest single category is &ldquo;we don't know&rdquo;</strong> — 51 rows,
+      41% of the dataset. Fifty of those have updates written as free prose rather than a
+      status field, and they are deliberately left uncoded rather than guessed. Keyword-matching
+      that prose produced a false &ldquo;implemented&rdquo; on a recommendation whose own
+      update says <em>&ldquo;no formal response has been received&rdquo;</em>. Every row
+      records which basis its status came from, so the 71 reliable ones can be counted on
+      their own.
+    </p>
+    <p>
+      Of the nine refused or never started, <strong>seven sit with courts and justice</strong>
+      — three of them &ldquo;pending identification of resources&rdquo;, with start dates that
+      have since passed. The 2021–23 NSW report publishes no recommendations and no status
+      chapter at all, so the 2019–21 and 2021–23 rounds have never been reported on.
+    </p>
+
+    <h3>The finding that matters most</h3>
+    <p>Two recommendations were refused, and then quietly done anyway.</p>
+
+    <blockquote>
+      <p>
+        &ldquo;The NSW Government is committed to the prevention of violence against women
+        and children, however <strong>does not intend to become a member of Our
+        Watch</strong>.&rdquo;
+      </p>
+      <cite>Whole of government response, 2018 — Recommendation 1.1</cite>
+      <p style="margin-top:1.1rem">
+        &ldquo;Complete. <strong>In July 2019, the NSW Government joined Our Watch.</strong>&rdquo;
+      </p>
+      <cite>Whole of government update, 2019 — the same recommendation</cite>
+    </blockquote>
+
+    <p>
+      That is published, government-sourced proof that <strong>&ldquo;not supported&rdquo; is
+      a position, not an outcome</strong>. It is the answer to anyone who says writing to a
+      minister changes nothing — and it is a stronger hook than the death toll.
+    </p>
+  </section>
+
+  <section>
+    <h2><span class="num">04</span> The path to action</h2>
+    <p class="deck">Three steps, in the order a stranger meets them</p>
+
+    <ol class="steps">
+      <li>
+        <b>The number, for their state.</b>
+        Ninety domestic homicides last year; twenty-three in NSW. A third of everyone killed
+        in Australia, killed by family. Sourced to the AIC, shown per state, with the
+        eight-fold rate spread visible rather than averaged away.
+      </li>
+      <li>
+        <b>These deaths were reviewed, and recommendations were written.</b>
+        Here are the recommendations for your state, what the government said about each one,
+        and what it then did — or didn't. Refused and stalled items surface first, each linked
+        to the page of the PDF it came from, so every claim is checkable.
+      </li>
+      <li>
+        <b>One click to act.</b>
+        A prefabricated email to the named minister about a specific stalled recommendation,
+        quoting the recommendation and the government's own words about it. Already built for
+        WA; NSW now has the recommendation data and needs the minister mapping.
+      </li>
+    </ol>
+
+    <p>
+      The design claim is that <strong>specificity is what converts</strong>. Not
+      &ldquo;domestic violence is terrible&rdquo;, but &ldquo;Recommendation 18 of the 2017–19
+      report, directed at your Attorney General, has been <em>not started — pending
+      identification of resources</em> since 2021.&rdquo;
+    </p>
+
+    <h3>What this is not</h3>
+    <ul>
+      <li>
+        <strong>Not a death counter.</strong> The AIC does that better than this project
+        could. The site cites and links it.
+      </li>
+      <li>
+        <strong>Not victim-level detail.</strong> Nothing beyond what the source reports
+        already published.
+      </li>
+      <li>
+        <strong>Not a judge scorecard.</strong> That was the original idea. Judge-level
+        sentencing data is not published in Australia, and the idea carried real defamation
+        exposure.
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">05</span> Open questions</h2>
+    <p class="deck">These need a decision, not an assumption</p>
+
+    <ol class="questions">
+      <li>
+        <b>Live counter, or official only?</b>
+        <span>An official-only counter is accurate and sixteen months stale. A volunteer tally
+        is current, unofficial, and counts a different population. One option: lead with the
+        AIC figure and show &ldquo;and X since the last official count&rdquo; from a clearly
+        attributed secondary source — but that source has to be verified first.</span>
+      </li>
+      <li>
+        <b>All eight jurisdictions, or only the four with recommendations?</b>
+        <span>Covering all eight makes &ldquo;two jurisdictions review nothing&rdquo; a visible
+        finding rather than a footnote, at the cost of several states having a death count and
+        an empty recommendations table.</span>
+      </li>
+      <li>
+        <b>The fifty uncoded NSW statuses.</b>
+        <span>They need a reading pass to become usable. They are the 2011–2015 rounds — the
+        oldest, and the most likely to show inertia, which is exactly the signal the tracker
+        exists to expose.</span>
+      </li>
+      <li>
+        <b>The ACT's current review status.</b>
+        <span>Must be checked before anything is published. The present claim rests on a
+        ten-year-old citation.</span>
+      </li>
+      <li>
+        <b><code style="font-family:var(--sans)">repeat_of</code> is unpopulated everywhere.</b>
+        <span>It is the field that exposes the same recommendation being made three times in a
+        decade, and it is the strongest argument available. It needs a matching pass across
+        every jurisdiction.</span>
+      </li>
+    </ol>
+  </section>
+
+  <div class="sources">
+    <h3 style="margin-top:0">Sources</h3>
+    <ul>
+      <li>
+        Australian Institute of Criminology, <em>Homicide in Australia 2024–25</em>,
+        Statistical Report 58, published February 2026 —
+        <a href="https://www.aic.gov.au/publications/sr/sr58">aic.gov.au/publications/sr/sr58</a>
+      </li>
+      <li>
+        Australian Institute of Criminology, <em>Homicide in Australia 2023–24</em>,
+        Statistical Report 52 —
+        <a href="https://www.aic.gov.au/sites/default/files/2025-03/sr52_homicide_in_australia_2023-24.pdf">sr52 (PDF)</a>
+      </li>
+      <li>
+        NSW Domestic Violence Death Review Team, Report 2021–2023, chapter 2, figures 2.1–2.3
+        — <code>raw-reports/NSW/2021-2023.pdf</code>
+      </li>
+      <li>
+        NSW DVDRT Reports 2015–2017, 2017–2019 and 2019–2021 — recommendation status chapters.
+        Extraction method and its limits in <code>docs/inventory.md</code>
+      </li>
+      <li>
+        Queensland Domestic and Family Violence Death Review and Advisory Board, Annual Report
+        2025–26, table 3.5
+      </li>
+      <li>
+        Ombudsman Western Australia, <em>A Review of Family and Domestic Violence in Western
+        Australia</em> (2026), section 5.4
+      </li>
+      <li>
+        South Australia State Coroner annual reports, 2005–06 to 2024–25 —
+        <code>text/SA_*.txt</code>
+      </li>
+    </ul>
+  </div>
+
+</div>
