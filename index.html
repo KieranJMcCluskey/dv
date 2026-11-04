@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DV Death Review Recommendation Tracker — headline numbers</title>
+<title>DV Death Review Recommendation Tracker</title>
 <style>
   :root {
     color-scheme: light dark;
@@ -100,6 +100,10 @@
   .gap-row .juris .status-row { margin-top: 4px; }
   .gap-row .desc { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
   .gap-row .desc strong { color: var(--text-primary); }
+  /* The source line in a gap row sits inside .desc, where the .tile .source
+     rule cannot reach it. Same treatment, scoped here. */
+  .gap-row .desc .source { font-size: 12px; color: var(--text-muted); margin-top: 8px; }
+  .gap-row .desc .source a { color: inherit; }
 
   .note { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-top: 12px; }
   footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--gridline);
@@ -111,7 +115,7 @@
   <div class="wrap">
 
     <h1>DV death review recommendations: who's acting on them?</h1>
-    <p class="dek">Every state DV/family-violence death review body makes recommendations to stop the next death. This tracks what happened after — jurisdiction by jurisdiction, straight from each body's own reporting. First pass: headline numbers only, sourced from the most recent report that states them.</p>
+    <p class="dek">Every state DV/family-violence death review body makes recommendations to stop the next death. This tracks what happened after — jurisdiction by jurisdiction, straight from each body's own reporting. <strong>232 recommendations are now extracted individually</strong> for NSW, SA and WA, each with the government's own words about it and a link back to the page it came from.</p>
 
     <h2>What the numbers say, by jurisdiction</h2>
     <div class="kpi-row">
@@ -120,8 +124,11 @@
         <div class="label">NSW — DVDRT</div>
         <div class="value">40%</div>
         <div class="status-row warning"><span class="dot warning"></span>Partial</div>
-        <div class="context">Of 122 recommendations made 2011–2019, 49 are implemented. 8% (10) have had no action at all. The Team paused issuing new recommendations after this report to focus on data analysis instead.</div>
-        <div class="source">Source: <a href="https://coroners.nsw.gov.au/documents/reports/2019-2021_DVDRT_Report.pdf" target="_blank" rel="noopener">DVDRT Report 2019–2021</a>, Table 7.2</div>
+        <div class="context">Of 122 recommendations made 2011–2019, the Team assesses 49 as implemented and 10 as having had no action at all.
+          <br><br><strong>All 122 are now extracted individually.</strong> Read against the government's own responses rather than its summary table, the picture is close: <strong>45 implemented, 12 never started or refused.</strong> Two independent measurements landing in the same place.
+          <br><br><strong>And two were refused, then done anyway.</strong> Recommendation 1.1 was refused in 2018 — the government "does not intend to become a member of Our Watch" — and its 2019 update reads "Complete. In July 2019, the NSW Government joined Our Watch." Published proof that "not supported" is a position, not an outcome.
+          <br><br>The most recent government word on any NSW recommendation is from <strong>2021</strong>: the 2021–23 report publishes no recommendations and no status chapter at all.</div>
+        <div class="source">Sources: <a href="https://coroners.nsw.gov.au/documents/reports/2019-2021_DVDRT_Report.pdf" target="_blank" rel="noopener">DVDRT Report 2019–2021</a>, Table 7.2 for the Team's own assessment; the 2015–17, 2017–19 and 2019–21 response chapters for the per-recommendation figures. These are two different measurements of the same 122 recommendations and are not summed. "Implemented" means the agency said it did the thing, not that anyone verified it.</div>
       </div>
 
       <div class="tile">
@@ -136,17 +143,19 @@
         <div class="label">WA — Ombudsman</div>
         <div class="value">9/9</div>
         <div class="status-row warning"><span class="dot warning"></span>Claimed, not verified</div>
-        <div class="context">All 9 recommendations from the 2022 investigation had "steps taken or proposed" per the 2023 follow-up — agency self-report, not confirmed completion. A separate 54 recommendations from 2015 are not yet reconciled here.</div>
+        <div class="context">All 9 recommendations from the 2022 investigation had "steps taken or proposed" per the 2023 follow-up — agency self-report, not confirmed completion.
+          <br><br>All <strong>72</strong> WA recommendations are now extracted: 54 from the 2015 violence restraining orders investigation, 9 from 2022, and 9 from the 2026 review of 237 fatalities. The 9/9 figure above covers only the 2022 set, which is the only one with a published follow-up. None of the 72 is a restatement of another — WA's reports are discrete investigations rather than an annual cycle, so there is no mechanism by which a recommendation would be formally re-made.</div>
         <div class="source">Source: <a href="https://ombudsman.wa.gov.au/sites/default/files/2026-05/Implementation-of-recommendations-from-an-Investigation-into-family-and-domestic-violence-and-suicide-2023.pdf" target="_blank" rel="noopener">2023 implementation report</a></div>
         <div class="source"><a href="wa-action.html">See all 72 WA recommendations &amp; email your minister &rarr;</a></div>
       </div>
 
       <div class="tile">
         <div class="label">SA — State Coroner</div>
-        <div class="value">No tally</div>
-        <div class="status-row serious"><span class="dot serious"></span>Not publicly tracked</div>
-        <div class="context">DV recommendations are issued inquest-by-inquest, buried inside general State Coroner annual reports. Checked the most recent report (2024–25): zero DV-specific recommendations that year. No cumulative count or implementation tracking found anywhere in the series.</div>
-        <div class="source">Source: <a href="https://www.courts.sa.gov.au/publications/annual-reports/" target="_blank" rel="noopener">State Coroner annual reports</a>, 17 years checked</div>
+        <div class="value">38</div>
+        <div class="status-row serious"><span class="dot serious"></span>Extracted here; not tracked by SA</div>
+        <div class="context">SA publishes no tally, so we built one: <strong>38 recommendations</strong> pulled inquest-by-inquest out of general State Coroner annual reports, which is where DV recommendations are buried. Two are repeats — in one, the Coroner re-made an earlier recommendation word for word and said so.
+          <br><br><strong>And SA appears to have stopped.</strong> Across the 17 reports in the series, the word "homicide" appears <strong>zero times in every report from 2018–19 onward</strong>, while "coroner" appears 76–129 times in those same files — so that is the reports' content, not a failed text extraction. The last report with substantial DV content was 2017–18.</div>
+        <div class="source">Source: <a href="https://www.courts.sa.gov.au/publications/annual-reports/" target="_blank" rel="noopener">State Coroner annual reports</a>, all 17 extracted. Covers the annual reports only — SA publishes individual inquest findings separately and those were not examined, so this is not a claim that SA reviews nothing.</div>
       </div>
 
     </div>
@@ -157,16 +166,16 @@
 
       <div class="gap-row">
         <div class="juris">ACT
-          <div class="status-row critical"><span class="dot critical"></span>No mechanism</div>
+          <div class="status-row serious"><span class="dot serious"></span>Legislated, nothing published</div>
         </div>
-        <div class="desc">No domestic/family violence death review body exists. Confirmed via the Australian Human Rights Commission's 2016 call to expand DV death review to the jurisdictions that lack it.</div>
+        <div class="desc"><strong>Corrected 4 Nov 2026.</strong> This previously read "no mechanism exists", sourced to the Australian Human Rights Commission's 2016 call to expand DV death review — a ten-year-old document being cited as current. An ACT Family Violence Death Review was established through legislation in 2021 and the formal process is still being developed. So the gap is not the absence of a body; it is that there is no published recommendation register to track. <div class="source">Source: <a href="https://dfvbenchbook.aija.org.au/factors-affecting-risk/death-review" target="_blank" rel="noopener">AIJA National DFV Bench Book</a>, death review, updated August 2025</div></div>
       </div>
 
       <div class="gap-row">
         <div class="juris">TAS
           <div class="status-row critical"><span class="dot critical"></span>No mechanism</div>
         </div>
-        <div class="desc">Same gap as the ACT — no standing DV death review function. Nobody is systematically reviewing these deaths in either jurisdiction.</div>
+        <div class="desc">The one jurisdiction with no formal death review process at all — not "the same gap as the ACT", as this previously said. Family violence deaths are examined only by a coroner, and those investigations are often not released publicly. A review of the Coroners Act was underway as of July 2026. <div class="source">Source: <a href="https://dfvbenchbook.aija.org.au/factors-affecting-risk/death-review" target="_blank" rel="noopener">AIJA National DFV Bench Book</a>, death review, updated August 2025</div></div>
       </div>
 
       <div class="gap-row">
@@ -186,7 +195,7 @@
     </div>
 
     <footer>
-      dv-death-review-tracker — headline numbers pass, 2026-10-31. Full per-recommendation extraction (theme, target agency, repeat-recommendation detection) is the next phase; see docs/scope.md.
+      dv-death-review-tracker — per-recommendation extraction for NSW (122), SA (38) and WA (72), 2026-11-04. Repeat detection done; theme tagging and the QLD extraction are still to come. Why this project exists and what it can and cannot show: <a href="docs/problem-statement.html">problem statement</a>. Method and the limits of every check: <a href="docs/inventory.md">inventory</a>.
     </footer>
   </div>
 </div>
