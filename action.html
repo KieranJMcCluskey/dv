@@ -116,13 +116,13 @@
   <div class="caveat" id="page-caveat"></div>
 
   <h2>Your details</h2>
-  <div class="sender-grid">
-    <label>First name<input id="f-first" type="text" autocomplete="given-name"></label>
-    <label>Surname<input id="f-last" type="text" autocomplete="family-name"></label>
-    <label>Your email (optional, included in signature)<input id="f-email" type="email" autocomplete="email"></label>
-    <label>Suburb / electorate (optional)<input id="f-suburb" type="text"></label>
+  <div class="sender-box">
+    <div class="field"><label for="f-first">First name</label><input id="f-first" type="text" autocomplete="given-name"></div>
+    <div class="field"><label for="f-last">Surname</label><input id="f-last" type="text" autocomplete="family-name"></div>
+    <div class="field"><label for="f-email">Your email (optional, included in signature)</label><input id="f-email" type="email" autocomplete="email"></div>
+    <div class="field"><label for="f-suburb">Suburb / electorate (optional)</label><input id="f-suburb" type="text" autocomplete="address-level2"></div>
+    <div class="hint">Saved in your browser only. These details go nowhere except into the letter, where they sign it.</div>
   </div>
-  <p class="fineprint">Saved in your browser only. These details go nowhere except into the letter below, where they sign it.</p>
 
   <h2>Filter</h2>
   <div class="filters" id="status-filters"></div>
@@ -189,6 +189,18 @@ const statusClass = s => 'status-' + s.replace(/\s+/g, '-');
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function truncate(t, max) { return t.length <= max ? t : t.slice(0, max).replace(/\s+\S*$/, '') + '\u2026'; }
 
+/* status_as_of holds an internal identifier like
+   "NSW_2015-2017 whole-of-government update 2017". That is fine in the data and
+   wrong in a letter to a minister, so it is turned back into English here. */
+function statusSource(v) {
+  if (!v) return '';
+  var t = String(v).replace(/^(NSW|SA|WA|QLD)_/, '').replace(/_/g, ' ').trim();
+  var m = t.match(/^(\d{4})[-\u2013](\d{4})\s+(.*?)\s*(\d{4})$/);
+  if (m) return ' in the ' + m[4] + ' ' + m[3];
+  if (/^\d{4}[-\u2013]\d{4}$/.test(t)) return ' in the ' + t + ' report';
+  return ' in the ' + t;
+}
+
 function ministerFor(rec) { return MINISTERS.agencies[rec.target_agency[0]] || null; }
 
 function buildLetter(rec) {
@@ -210,8 +222,7 @@ function buildLetter(rec) {
     '',
     '"' + truncate(rec.text, 600) + '"',
     '',
-    'Its status is recorded as "' + rec.status + '"' +
-      (rec.status_as_of ? ' as of ' + rec.status_as_of : '') +
+    'Its status is recorded as "' + rec.status + '"' + statusSource(rec.status_as_of) +
       '. Please tell me what has been done to action this recommendation. If it has not been ' +
       'actioned, please tell me why not, and what the timeline is.',
     '',
@@ -231,12 +242,14 @@ function openLetter(letter) {
   document.getElementById('letter-note').textContent =
     JUR.label + ' publishes no ministerial email address, so copy the letter and paste it into ' +
     'the official contact form. Subject: ' + letter.subject;
-  document.getElementById('letter-text').value = letter.body;
+  var ta = document.getElementById('letter-text');
+  ta.value = letter.body;
   const open = document.getElementById('letter-open');
   open.href = letter.minister.contact_url;
   open.textContent = 'Open the contact page for ' + letter.minister.minister;
   document.getElementById('letter-copied').hidden = true;
   if (panel.showModal) panel.showModal(); else panel.setAttribute('open', '');
+  ta.scrollTop = 0;   // after showModal: showing the dialog resets scroll, so this must follow it
 }
 document.getElementById('letter-copy').addEventListener('click', async () => {
   const ta = document.getElementById('letter-text');
