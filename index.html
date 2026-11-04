@@ -105,6 +105,15 @@
   .gap-row .desc .source { font-size: 12px; color: var(--text-muted); margin-top: 8px; }
   .gap-row .desc .source a { color: inherit; }
 
+  .tile .basis { font-size: 12px; color: var(--text-muted); margin-top: -4px; }
+  /* The action is the point of the page, so it is a control, not a citation. */
+  .tile .action {
+    display: block; margin-top: 12px; padding: 10px 14px; border-radius: 6px;
+    background: var(--text-primary); color: var(--page-plane);
+    font-size: 13px; font-weight: 600; text-decoration: none; text-align: center;
+  }
+  .tile .action:hover { background: var(--status-critical); color: #fff; }
+  .tile .action:focus-visible { outline: 2px solid var(--status-critical); outline-offset: 2px; }
   .note { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-top: 12px; }
   footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--gridline);
            font-size: 12px; color: var(--text-muted); }
@@ -115,7 +124,7 @@
   <div class="wrap">
 
     <h1>DV death review recommendations: who's acting on them?</h1>
-    <p class="dek">After a domestic violence death, the state's review body recommends changes meant to stop the next one. <strong>232 of those recommendations are listed here individually</strong>, for NSW, SA and WA, each with the government's own words about what it did and a link to the page that says so. No government reports on them beyond the first two years, and nobody else aggregates them.</p>
+    <p class="dek">Australian governments have been told <strong>232 times</strong> what would stop the next domestic violence death. <strong>53 of those recommendations are confirmed implemented. 22 were never started or were refused outright.</strong> The rest sit in progress or have no status at all. Every one is listed below, by state, with the status its own government recorded against it.</p>
 
     <h2>What the numbers say, by jurisdiction</h2>
     <div class="kpi-row">
@@ -123,6 +132,7 @@
       <div class="tile">
         <div class="label">NSW DVDRT</div>
         <div class="value">40%</div>
+        <div class="basis">49 of 122 implemented, on the Team's own assessment</div>
         <div class="status-row warning"><span class="dot warning"></span>Partial</div>
         <div class="context">122 recommendations, 2011 to 2019. The Team records 49 as implemented and 10 as never acted on. Read against the government's own responses, the figures land in the same place: 45 implemented, 12 never started or refused.
           <br><br><strong>Two were refused, then done anyway.</strong> On recommendation 1.1 the government said in 2018 it "does not intend to become a member of Our Watch". Its 2019 update on the same recommendation: "Complete. In July 2019, the NSW Government joined Our Watch." A refusal is a position, not an outcome.
@@ -133,6 +143,7 @@
       <div class="tile">
         <div class="label">QLD DFVDRAB</div>
         <div class="value">84%</div>
+        <div class="basis">67 of 80 implemented, on the Board's own table</div>
         <div class="status-row good"><span class="dot good"></span>Mostly actioned</div>
         <div class="context">Of 80 recommendations since 2016, 67 are implemented and 7 more are in progress. Only 1 was ever rejected (noted) by government.</div>
         <div class="source">Source: <a href="https://www.coronerscourt.qld.gov.au/__data/assets/pdf_file/0006/885921/domestic-and-family-violence-death-review-and-advisory-board-report-2024-25.pdf" target="_blank" rel="noopener">DFVDRAB Annual Report 2024–25</a>, p.19</div>
@@ -140,17 +151,19 @@
 
       <div class="tile">
         <div class="label">WA Ombudsman</div>
-        <div class="value">9/9</div>
-        <div class="status-row warning"><span class="dot warning"></span>Claimed, not verified</div>
-        <div class="context">The 2023 follow-up records "steps taken or proposed" against all 9 recommendations from the 2022 investigation. That is the agency reporting on itself, not confirmed completion.
-          <br><br><strong>72 WA recommendations are listed:</strong> 54 from the 2015 violence restraining orders investigation, 9 from 2022, 9 from the 2026 review of 237 fatalities. The 9/9 figure covers the 2022 set only, the one set with a published follow-up. The other 63 have none.</div>
+        <div class="value">0%</div>
+        <div class="basis">0 of 72 confirmed implemented</div>
+        <div class="status-row critical"><span class="dot critical"></span>None confirmed</div>
+        <div class="context">Not one of the 72 is confirmed implemented. The closest thing to progress is the 2023 follow-up, which records "steps taken or proposed" against the 9 recommendations from the 2022 investigation. That is the agency reporting on itself.
+          <br><br><strong>72 WA recommendations are listed:</strong> 54 from the 2015 violence restraining orders investigation, 9 from 2022, 9 from the 2026 review of 237 fatalities. Only that 2022 set has a published follow-up at all. The other 63 recommendations have none.</div>
         <div class="source">Source: <a href="https://ombudsman.wa.gov.au/sites/default/files/2026-05/Implementation-of-recommendations-from-an-Investigation-into-family-and-domestic-violence-and-suicide-2023.pdf" target="_blank" rel="noopener">2023 implementation report</a></div>
-        <div class="source"><a href="wa-action.html">See all 72 WA recommendations &amp; email your minister &rarr;</a></div>
+        <a class="action" href="wa-action.html">Email a WA minister about one of these &rarr;</a>
       </div>
 
       <div class="tile">
         <div class="label">SA State Coroner</div>
-        <div class="value">38</div>
+        <div class="value">21%</div>
+        <div class="basis">8 of 38 implemented, extracted from inquest reports</div>
         <div class="status-row serious"><span class="dot serious"></span>Extracted here; not tracked by SA</div>
         <div class="context">SA publishes no tally, so this is the first one: <strong>38 recommendations</strong>, taken inquest by inquest out of the general State Coroner annual reports where they sit. In one of them the Coroner re-made an earlier recommendation word for word and said so.
           <br><br><strong>SA stopped reporting after 2017–18.</strong> The word "homicide" appears <strong>zero times in every annual report from 2018–19 onward</strong>. "Coroner" appears 76 to 129 times in those same files, so this is what the reports contain, not a failed text extraction.</div>
